@@ -40,27 +40,47 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                     </div>
-                                    <form class="user">
-                                        <div class="form-group">
-                                            <input type="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Enter Email Address...">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Password">
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label class="custom-control-label" for="customCheck">Remember
-                                                    Me</label>
-                                            </div>
-                                        </div>
-                                        <a href="index.html" class="btn btn-primary btn-user btn-block">
-                                            Login
-                                        </a>
-                                    </form>
+
+
+                               <form class="form-horizontal form-simple" action="{{route('panel.login')}}" method="post">
+                                @csrf
+                                <fieldset class="form-group position-relative has-icon-left mb-0">
+                                    <input type="text" name="email" class="form-control form-control-lg input-lg"
+                                           value="{{old('email')}}" id="email" placeholder="أدخل البريد الالكتروني ">
+                                    <div class="form-control-position">
+                                        <i class="ft-user"></i>
+                                    </div>
+                                    @error('email')
+                                    <span class="text-danger">{{$message}}</span>
+                                    @enderror
+
+                                </fieldset>
+                                <fieldset class="form-group position-relative has-icon-left">
+                                    <input type="password" name="password" class="form-control form-control-lg input-lg"
+                                           id="user-password"
+                                           placeholder="أدخل كلمة المرور">
+                                    <div class="form-control-position">
+                                        <i class="la la-key"></i>
+                                    </div>
+                                    @error('password')
+                                    <span class="text-danger">{{$message}}</span>
+                                    @enderror
+                                </fieldset>
+                                <div class="form-group row">
+                                    <div class="col-md-6 col-12 text-center text-md-left">
+                                        <fieldset>
+                                            <input type="checkbox" name="remember_me" id="remember-me"
+                                                   class="chk-remember">
+                                            <label for="remember-me">تذكر دخولي</label>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-info btn-lg btn-block"><i class="ft-unlock"></i>
+                                    دخول
+                                </button>
+                            </form>
+
+
                                     <hr>
                                     <div class="text-center">
                                         <a class="small" href="forgot-password.html">Forgot Password?</a>

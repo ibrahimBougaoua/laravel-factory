@@ -15,4 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'panel'], function () {
        Route::get('/','App\Http\Controllers\Panel\DashbaordController@index')->name('panel.dashboard');
+       Route::post('/login','App\Http\Controllers\Panel\LoginController@checkLogin')->name('panel.login');
+
 });
