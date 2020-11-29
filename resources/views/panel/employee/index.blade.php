@@ -12,7 +12,7 @@
                     <!-- Content Row -->
                     <div class="row">
 
-
+                    @include('panel.alerts.success')
 
                     <!-- Employees -->
                     <div class="card shadow mb-4">
