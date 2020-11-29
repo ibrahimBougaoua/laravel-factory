@@ -83,11 +83,14 @@ class EmployeeController extends Controller
             if ($id == Auth::id())
                 return redirect()->route('employee.index')->with(['error' => "you can't delete you'r account"]);
             
+            if($employee->manage_id != Auth::id())
+                return redirect()->route('employee.index')->with(['error' => "you can't delete this account"]);
+
             $employee->delete();
     		
             return redirect()->route('employee.index')->with(['success' => 'Employee delete successfully']);
     	} catch (Exception $e) {
-    		return redirect()->route('employee.index')->with(['error' => 'Some error']);
+    		return redirect()->route('employee.index')->with(['error' => "you can't delete this account"]);
     	}
     }
 }

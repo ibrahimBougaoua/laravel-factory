@@ -64,7 +64,7 @@
                                             <td>        
                                                 <a href="{{ route('employee.show',$employee->id) }}" class="btn btn-sm btn-primary btn-icon-split">
                                                     <span class="icon text-white-50">
-                                                        <i class="fas fa-flag"></i>
+                                                        <i class="fas fa-info-circle"></i>
                                                     </span>
                                                     <span class="text">View</span>
                                                 </a>
