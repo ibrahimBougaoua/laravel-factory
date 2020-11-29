@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'panel','middleware' => 'auth:admin'],function(){
        Route::get('/','App\Http\Controllers\Panel\DashbaordController@index')->name('panel.dashboard');
+       Route::get('/logout','App\Http\Controllers\Panel\LoginController@logOut')->name('panel.logout');
 });
 
 Route::group(['prefix' => 'panel','middleware' => 'guest:admin'], function () {

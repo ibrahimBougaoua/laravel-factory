@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Panel;
 
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
@@ -20,6 +21,12 @@ class LoginController extends Controller
 
     public function getLogin()
     {
-    	return view('panel.auth.login');
+        return view('panel.auth.login');
+    }
+
+    public function logOut()
+    {
+        Auth::logout();
+        return view('panel.auth.login');
     }
 }
