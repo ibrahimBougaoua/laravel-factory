@@ -59,16 +59,27 @@ class EmployeeController extends Controller
 
             if($employee->manage_id != Auth::id())
                 return redirect()->route('employee.index')->with(['error' => "this employee does't exists"]);
-                
+
     		return view('panel.employee.show',compact('employee'));
     	} catch (Exception $e) {
     		return redirect()->route('employee.show')->with(['error' => 'some error']);
     	}
     }
 
-    public function edit()
+    public function edit($id)
     {
-    	return 'edit';
+    	try {
+            $employee = Admin::find($id);
+            if ( ! $employee )
+                return redirect()->route('employee.index')->with(['error' => "this employee does't exists"]);
+
+            if($employee->manage_id != Auth::id())
+                return redirect()->route('employee.index')->with(['error' => "this employee does't exists"]);
+            
+            return view('panel.employee.edit',compact('employee'));
+        } catch (Exception $e) {
+            return redirect()->route('employee.edit')->with(['error' => 'some error']);
+        }
     }
 
     public function update()

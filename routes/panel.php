@@ -19,7 +19,7 @@ Route::group(['prefix' => 'panel','middleware' => 'auth:admin'],function(){
 
        Route::group(['prefix' => 'employee'],function(){
        	      Route::get('/','App\Http\Controllers\Panel\EmployeeController@index')->name('employee.index');
-       	      Route::get('/edit','App\Http\Controllers\Panel\EmployeeController@edit')->name('employee.edit');
+       	      Route::get('/edit/{id}','App\Http\Controllers\Panel\EmployeeController@edit')->name('employee.edit');
        	      Route::post('/update','App\Http\Controllers\Panel\EmployeeController@update')->name('employee.update');
        	      Route::get('/create','App\Http\Controllers\Panel\EmployeeController@create')->name('employee.create');
        	      Route::post('/store','App\Http\Controllers\Panel\EmployeeController@store')->name('employee.store');
