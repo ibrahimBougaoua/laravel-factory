@@ -26,6 +26,7 @@
                                         <tr>
                                             <th>First name</th>
                                             <th>Last name</th>
+                                            <th>E-mail</th>
                                             <th>Gender</th>
                                             <th>Phone</th>
                                             <th>City</th>
@@ -39,10 +40,14 @@
                                         <tr>
                                             <th>First name</th>
                                             <th>Last name</th>
+                                            <th>E-mail</th>
                                             <th>Gender</th>
                                             <th>Phone</th>
                                             <th>City</th>
                                             <th>Status</th>
+                                            <th>View</th>
+                                            <th>Edit</th>
+                                            <th>Delete</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -50,6 +55,7 @@
                                         <tr>
                                             <td>{{$employee->first_name}}</td>
                                             <td>{{$employee->last_name}}</td>
+                                            <td>{{$employee->email}}</td>
                                             <td>{{$employee->gender}}</td>
                                             <td>{{$employee->phone}}</td>
                                             <td>{{$employee->city}}</td>
