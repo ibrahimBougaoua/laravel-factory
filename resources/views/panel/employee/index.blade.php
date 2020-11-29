@@ -31,6 +31,7 @@
                                             <th>Gender</th>
                                             <th>City</th>
                                             <th>Status</th>
+                                            <th>Created at</th>
                                             <th>View</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
@@ -44,6 +45,7 @@
                                             <th>Gender</th>
                                             <th>City</th>
                                             <th>Status</th>
+                                            <th>Created at</th>
                                             <th>View</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
@@ -58,8 +60,9 @@
                                             <td>{{$employee->gender}}</td>
                                             <td>{{$employee->city}}</td>
                                             <td>{{$employee->status}}</td>
+                                            <td>{{get_date($employee->created_at)}}</td>
                                             <td>        
-                                                <a href="{{ route('employee.show',$employee->id) }}" class="btn btn-primary btn-icon-split">
+                                                <a href="{{ route('employee.show',$employee->id) }}" class="btn btn-sm btn-primary btn-icon-split">
                                                     <span class="icon text-white-50">
                                                         <i class="fas fa-flag"></i>
                                                     </span>
@@ -67,7 +70,7 @@
                                                 </a>
                                             </td>
                                             <td>
-                                                <a href="#" class="btn btn-success btn-icon-split">
+                                                <a href="#" class="btn btn-sm btn-success btn-icon-split">
                                                     <span class="icon text-white-50">
                                                         <i class="fas fa-check"></i>
                                                     </span>
@@ -75,7 +78,7 @@
                                                 </a>
                                             </td>
                                             <td>
-                                                <a href="#" class="btn btn-danger btn-icon-split" data-toggle="modal" data-target="#modal-{{ $employee->id }}">
+                                                <a href="#" class="btn btn-sm btn-danger btn-icon-split" data-toggle="modal" data-target="#modal-{{ $employee->id }}">
                                                     <span class="icon text-white-50">
                                                         <i class="fas fa-trash"></i>
                                                     </span>

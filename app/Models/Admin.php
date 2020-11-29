@@ -26,7 +26,7 @@ class Admin extends Authenticatable
         'phone',
         'city',
         'address',
-        'picture',
+        'photo',
         'status',
         'trash',
         'manage_id'

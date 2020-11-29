@@ -38,7 +38,7 @@ class EmployeeController extends Controller
 	    			'phone' => $request->phone,
 	    			'city' => $request->city,
 	    			'address' => $request->address,
-	    			'photo' => $request->photo_path,
+	    			'photo' => $photo_path,
 	    			'manage_id' => Auth::id(),
 	    		]);
 	    		Notification::send($employee,new EmployeeCreated($employee));
