@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Admin extends Authenticatable
 {
@@ -40,6 +41,16 @@ class Admin extends Authenticatable
     protected $hidden = [
         'password',
     ];
+
+    public function scopeExceptSelf($query)
+    {
+        return $query->where([['id','!=',Auth::id()],['manage_id','=',Auth::id()]]);
+    }
+
+    public function setPasswordAttribute($password)
+    {
+        $this->attributes['password'] = Hash::make($password);
+    }
 
     public function getPhotoAttribute($value)
     {

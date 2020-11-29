@@ -14,7 +14,7 @@ class EmployeeController extends Controller
 {
     public function index()
     {
-    	$employees = Admin::all();
+    	$employees = Admin::exceptSelf()->get();
     	return view('panel.employee.index',compact('employees'));
     }
 
@@ -76,10 +76,16 @@ class EmployeeController extends Controller
     {
     	try {
     		$employee = Admin::find($id);
-    		if(!$employee)
+    		
+            if( ! $employee )
     			return redirect()->route('employee.index')->with(['error' => "This employee does not exist"]);
-    		$employee->delete();
-    		return redirect()->route('employee.index')->with(['success' => 'Employee delete successfully']);
+
+            if ($id == Auth::id())
+                return redirect()->route('employee.index')->with(['error' => "you can't delete you'r account"]);
+            
+            $employee->delete();
+    		
+            return redirect()->route('employee.index')->with(['success' => 'Employee delete successfully']);
     	} catch (Exception $e) {
     		return redirect()->route('employee.index')->with(['error' => 'Some error']);
     	}
