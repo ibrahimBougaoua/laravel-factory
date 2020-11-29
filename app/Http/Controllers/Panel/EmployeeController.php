@@ -29,7 +29,7 @@ class EmployeeController extends Controller
     		if (Auth::check()) {
 	    		$photo_path = "";
 	    		if($request->has('photo'))
-	    			$photo_path = upload_image('profile',$request->photo);
+	    			$photo_path = upload_image('profile/',$request->photo);
 	    		$employee = Admin::create([
 	    			'first_name' => $request->first_name,
 	    			'last_name' => $request->last_name,

@@ -17,9 +17,9 @@
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Details</h6>
                         </div>
+                        <img src="{{ $employee->photo }}" class="card-img-top" alt="...">
                         <div class="card-body">
 							<div class="card">
-							  <img src="..." class="card-img-top" alt="...">
 							  <div class="card-body">
 							    <h5 class="card-title">Details information</h5>
 							    <p class="card-text">First name : {{ $employee->first_name }}</p>
@@ -30,7 +30,6 @@
 							    <p class="card-text">City : {{ $employee->city }}</p>
 							    <p class="card-text">Address : {{ $employee->address }}</p>
 							    <p class="card-text">Status : {{ $employee->status }}</p>
-							    <p class="card-text">Photo : {{ $employee->photo }}</p>
 							  </div>
 							  <div class="card-body">
                                 <a href="{{ route('employee.show',$employee->id) }}" class="btn btn-success btn-icon-split">

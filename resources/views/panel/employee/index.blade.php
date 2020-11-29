@@ -25,6 +25,7 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
+                                            <th>Avatar</th>
                                             <th>First name</th>
                                             <th>Last name</th>
                                             <th>E-mail</th>
@@ -39,6 +40,7 @@
                                     </thead>
                                     <tfoot>
                                         <tr>
+                                            <th>Avatar</th>
                                             <th>First name</th>
                                             <th>Last name</th>
                                             <th>E-mail</th>
@@ -54,6 +56,7 @@
                                     <tbody>
                                         @foreach($employees as $employee)
                                         <tr>
+                                            <td><img src="{{$employee->photo}}" class="h-25 w-25" /></td>
                                             <td>{{$employee->first_name}}</td>
                                             <td>{{$employee->last_name}}</td>
                                             <td>{{$employee->email}}</td>

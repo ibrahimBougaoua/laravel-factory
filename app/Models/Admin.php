@@ -40,4 +40,12 @@ class Admin extends Authenticatable
     protected $hidden = [
         'password',
     ];
+
+    public function getPhotoAttribute($value)
+    {
+        if ( ! empty($value) )
+            return asset('assets/' . $value);
+        return null;
+    }
+
 }
