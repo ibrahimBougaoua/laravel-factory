@@ -24,22 +24,37 @@
                                       <div class="form-group col-md-6">
                                         <label for="exampleInputEmail1">First name</label>
                                         <input type="text" name="first_name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter First name">
+                                        @error('first_name')
+                                        <span class="text-danger"><small>{{$message}}</small></span>
+                                        @enderror
                                       </div>
                                       <div class="form-group col-md-6">
                                         <label for="exampleInputEmail1">Last name</label>
                                         <input type="text" name="last_name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Last name">
+                                        @error('last_name')
+                                        <span class="text-danger"><small>{{$message}}</small></span>
+                                        @enderror
                                       </div>
                                       <div class="form-group col-md-6">
                                         <label for="exampleInputEmail1">Email</label>
                                         <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                                        @error('email')
+                                        <span class="text-danger"><small>{{$message}}</small></span>
+                                        @enderror
                                       </div>
                                       <div class="form-group col-md-6">
                                         <label for="exampleInputPassword1">Password</label>
                                         <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                                       </div>
+                                        @error('password')
+                                        <span class="text-danger"><small>{{$message}}</small></span>
+                                        @enderror
                                       <div class="form-group col-md-6">
                                         <label for="exampleInputPassword1">Repeat Password</label>
                                         <input type="password" name="repassword" class="form-control" id="exampleInputPassword1" placeholder="Repeat Password">
+                                        @error('repassword')
+                                        <span class="text-danger"><small>{{$message}}</small></span>
+                                        @enderror
                                       </div>
                                       <div class="form-group col-md-6">
                                         <label for="exampleFormControlSelect1">Gender</label>
@@ -47,10 +62,16 @@
                                           <option value="man">Man</option>
                                           <option value="woman">Woman</option>
                                         </select>
+                                        @error('gender')
+                                        <span class="text-danger"><small>{{$message}}</small></span>
+                                        @enderror
                                       </div>
                                       <div class="form-group col-md-6">
                                         <label for="exampleInputEmail1">Phone</label>
                                         <input type="text" name="phone" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter phone number">
+                                        @error('phone')
+                                        <span class="text-danger"><small>{{$message}}</small></span>
+                                        @enderror
                                       </div>
                                       <div class="form-group col-md-6">
                                         <label for="exampleFormControlSelect1">City</label>
@@ -59,10 +80,16 @@
                                           <option value="anaba">anaba</option>
                                           <option value="tizi">tizi</option>
                                         </select>
+                                        @error('city')
+                                        <span class="text-danger"><small>{{$message}}</small></span>
+                                        @enderror
                                       </div>
                                       <div class="form-group col-md-6">
                                         <label for="exampleFormControlTextarea1">Address</label>
                                         <textarea name="address" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                        @error('address')
+                                        <span class="text-danger"><small>{{$message}}</small></span>
+                                        @enderror
                                       </div>
                                       <div class="form-group col-md-6">
                                         <label for="exampleFormControlTextarea1">Photo</label>

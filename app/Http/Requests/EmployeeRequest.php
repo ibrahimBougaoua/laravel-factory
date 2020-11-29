@@ -23,14 +23,17 @@ class EmployeeRequest extends FormRequest
      */
     public function rules()
     {
-        return [/*
-            'first_name' => 'required|string|max:100',
-            'first_name' => 'required|string|max:100',
+        return [
+            'first_name' => 'required|string|max:100|min:3',
+            'last_name' => 'required|string|max:100|max:3',
             'email' => 'required|email|unique:admins,email,' . $this->id,
             'password' => 'required_without:id',
-            'phone' => 'required|max:50|unique:admins,phone,' . $this->id,
+            'repassword' => 'required_without:id',
+            'phone' => 'required|max:80|unique:admins,phone,'.$this->id,
+            'address' => 'required|min:5',
             'city' => 'required',
-            'address' => 'required',
+            'gender' => 'required',
+            /*'address' => 'required',
             'manage_id' => 'required|exists:admins,id|'
             */
         ];
@@ -39,9 +42,16 @@ class EmployeeRequest extends FormRequest
     public function messages()
     {
         return [
-            'required' => 'this field is required',
-            'email.email' => 'email invalide',
-            'max' => 'this field is to long',
+            'first_name.min' => 'first_name most be > 3 caracter !',
+            'last_name.min' => 'first_name most be > 3 caracter !',
+            'first_name.required' => 'The first name field is required.',
+            'last_name.required' => 'The last name field is required.',
+            'password.required' => 'The password field is required.',
+            'repassword.required' => 'The repeate password field is required.',
+            'phone.required' => 'The phone field is required.',
+            'address.required' => 'The address field is required.',
+            'city.required' => 'The city field is required.',
+            'gender.required' => 'The gender field is required.',
         ];
     }
 }
