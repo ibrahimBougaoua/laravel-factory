@@ -3,13 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
 
 class Admin extends Authenticatable
 {
-    use HasFactory;
-    
+    use Notifiable;
+
     protected $table = "admins";
     
     /**
@@ -28,7 +28,8 @@ class Admin extends Authenticatable
         'address',
         'picture',
         'status',
-        'trash'
+        'trash',
+        'manage_id'
     ];
 
     /**

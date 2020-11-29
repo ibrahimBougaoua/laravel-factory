@@ -18,7 +18,7 @@
                                     <h6 class="m-0 font-weight-bold text-primary">New employee</h6>
                                 </div>
                                 <div class="card-body">
-                                    <form action="{{ Route('employee.store') }}" method="POST" enctype="multipart/form-data">
+                                    <form action="{{ route('employee.store') }}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-row">
                                       <div class="form-group col-md-6">
@@ -62,12 +62,12 @@
                                       </div>
                                       <div class="form-group col-md-6">
                                         <label for="exampleFormControlTextarea1">Address</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                        <textarea name="address" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                       </div>
                                       <div class="form-group col-md-6">
                                         <label for="exampleFormControlTextarea1">Photo</label>
                                         <div class="custom-file">
-                                          <input type="file" class="custom-file-input" id="customFile">
+                                          <input type="file" name="photo" class="custom-file-input" id="customFile">
                                           <label class="custom-file-label" for="customFile">Choose file</label>
                                         </div>
                                       </div>
