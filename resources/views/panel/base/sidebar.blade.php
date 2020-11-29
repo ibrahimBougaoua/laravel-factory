@@ -29,12 +29,12 @@
 
             <!-- Employees -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#employees"
+                    aria-expanded="true" aria-controls="employees">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Employees</span>
                 </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="employees" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">employees :</h6>
                         <a class="collapse-item" href="{{ Route('employee.index') }}">All employees</a>
@@ -45,17 +45,34 @@
 
             <!-- Factorie -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#factories"
+                    aria-expanded="true" aria-controls="factories">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Factories</span>
                 </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                <div id="factories" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">factories :</h6>
                         <a class="collapse-item" href="{{ route('factory.index') }}">All factories</a>
                         <a class="collapse-item" href="{{ route('factory.create') }}">Create new factory</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- point of sale -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pointofsale"
+                    aria-expanded="true" aria-controls="pointofsale">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Points of sales</span>
+                </a>
+                <div id="pointofsale" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">point of sale :</h6>
+                        <a class="collapse-item" href="{{ route('pointofsale.index') }}">All points of sales</a>
+                        <a class="collapse-item" href="{{ route('pointofsale.create') }}">Create new point of sale</a>
                     </div>
                 </div>
             </li>

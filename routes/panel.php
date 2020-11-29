@@ -38,6 +38,17 @@ Route::group(['prefix' => 'panel','middleware' => 'auth:admin'],function(){
                     Route::get('/show/{id}','App\Http\Controllers\Panel\FactoryController@show')->name('factory.show');
                     Route::get('/delete/{id}','App\Http\Controllers\Panel\FactoryController@destroy')->name('factory.delete');
        });
+
+       /* point of sale routing */
+       Route::group(['prefix' => 'pointofsale'],function(){
+                    Route::get('/','App\Http\Controllers\Panel\PointOfSaleController@index')->name('pointofsale.index');
+                    Route::get('/edit/{id}','App\Http\Controllers\Panel\PointOfSaleController@edit')->name('pointofsale.edit');
+                    Route::post('/update/{id}','App\Http\Controllers\Panel\PointOfSaleController@update')->name('pointofsale.update');
+                    Route::get('/create','App\Http\Controllers\Panel\PointOfSaleController@create')->name('pointofsale.create');
+                    Route::post('/store','App\Http\Controllers\Panel\PointOfSaleController@store')->name('pointofsale.store');
+                    Route::get('/show/{id}','App\Http\Controllers\Panel\PointOfSaleController@show')->name('pointofsale.show');
+                    Route::get('/delete/{id}','App\Http\Controllers\Panel\PointOfSaleController@destroy')->name('pointofsale.delete');
+       });
        
        Route::get('/logout','App\Http\Controllers\Panel\LoginController@logOut')->name('panel.logout');
 });
