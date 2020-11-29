@@ -16,7 +16,7 @@ class EmployeeController extends Controller
 
     public function create()
     {
-    	return 'create';
+    	return view('panel.employee.create');
     }
 
     public function edit()

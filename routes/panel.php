@@ -21,6 +21,7 @@ Route::group(['prefix' => 'panel','middleware' => 'auth:admin'],function(){
        	      Route::get('/','App\Http\Controllers\Panel\EmployeeController@index')->name('employee.index');
        	      Route::get('/edit','App\Http\Controllers\Panel\EmployeeController@edit')->name('employee.edit');
        	      Route::post('/update','App\Http\Controllers\Panel\EmployeeController@update')->name('employee.update');
+       	      Route::get('/create','App\Http\Controllers\Panel\EmployeeController@create')->name('employee.create');
        	      Route::post('/store','App\Http\Controllers\Panel\EmployeeController@store')->name('employee.store');
        	      Route::get('/show','App\Http\Controllers\Panel\EmployeeController@show')->name('employee.show');
        	      Route::post('/delete','App\Http\Controllers\Panel\EmployeeController@destroy')->name('employee.destroy');
