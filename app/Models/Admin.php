@@ -45,7 +45,14 @@ class Admin extends Authenticatable
     {
         if ( ! empty($value) )
             return asset('assets/' . $value);
-        return null;
+        return asset('admin/images/profile.jpg');
+    }
+
+    public function getStatusAttribute($value)
+    {
+        if ( $value == 0 )
+            return 'Active';
+        return 'deactivated';
     }
 
 }
