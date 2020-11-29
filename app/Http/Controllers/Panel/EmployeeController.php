@@ -27,10 +27,12 @@ class EmployeeController extends Controller
     {
     	try {
     		if (Auth::check()) {
+
 	    		$photo_path = "";
 	    		if($request->has('photo'))
 	    			$photo_path = upload_image('profile/',$request->photo);
-	    		$employee = Admin::create([
+	    		
+                $employee = Admin::create([
 	    			'first_name' => $request->first_name,
 	    			'last_name' => $request->last_name,
 	    			'email' => $request->email,
@@ -41,7 +43,8 @@ class EmployeeController extends Controller
 	    			'photo' => $photo_path,
 	    			'manage_id' => Auth::id(),
 	    		]);
-	    		Notification::send($employee,new EmployeeCreated($employee));
+	    		
+                Notification::send($employee,new EmployeeCreated($employee));
 	    		return redirect()->route('employee.index')->with(['success' => 'Employee added successfully !']);
 	    	}
 	    	return redirect()->route('employee.index')->with(['error' => 'You must be already authenticated !']);
