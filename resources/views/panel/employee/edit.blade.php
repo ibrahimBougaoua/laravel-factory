@@ -18,8 +18,9 @@
                                     <h6 class="m-0 font-weight-bold text-primary">Update employee</h6>
                                 </div>
                                 <div class="card-body">
-                                    <form action="{{ route('employee.update') }}" method="POST" enctype="multipart/form-data">
+                                    <form action="{{ route('employee.update',$employee->id) }}" method="POST" enctype="multipart/form-data">
                                         @csrf
+                                        <input type="hidden" name="id" value="{{ $employee->id }}" />
                                         <div class="form-row">
                                       <div class="form-group col-md-6">
                                         <label for="exampleInputEmail1">First name</label>
@@ -110,7 +111,7 @@
                                           <label class="custom-file-label" for="customFile">Choose file</label>
                                         </div>
                                       </div>
-                                      <button type="submit" class="btn btn-primary">Create new employee</button>
+                                      <button type="submit" class="btn btn-primary">Update</button>
                                     </form>
                                 </div>
                             </div>

@@ -25,11 +25,11 @@ class EmployeeRequest extends FormRequest
     {
         return [
             'first_name' => 'required|string|max:100|min:3',
-            'last_name' => 'required|string|max:100|max:3',
-            'email' => 'required|email|unique:admins,email,' . $this->id,
+            'last_name' => 'required|string|max:100|min:3',
+            'phone' => 'sometimes|required|max:80|unique:admins,phone,'.$this->id,
+            'email' => 'required|email|unique:admins,email,'.$this->id,
             'password' => 'required_without:id',
             'repassword' => 'required_without:id',
-            'phone' => 'required|max:80|unique:admins,phone,'.$this->id,
             'address' => 'required|min:5',
             'city' => 'required',
             'gender' => 'required',

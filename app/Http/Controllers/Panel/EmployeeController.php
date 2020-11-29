@@ -82,9 +82,39 @@ class EmployeeController extends Controller
         }
     }
 
-    public function update()
+    public function update($id,EmployeeRequest $request)
     {
-    	return 'update';
+    	try {
+           $employee = Admin::find($id);
+           
+           if( ! $employee )
+            return redirect()->route('employee.index')->with(['error' => "this employee does't exists"]);
+           
+           if($employee->manage_id != Auth::id())
+            return redirect()->route('employee.index')->with(['error' => "this employee does't exists"]);
+
+            if($request->has('photo'))
+            {
+                $photo_path = upload_image('profile/',$request->photo);
+                Admin::where('id',$id)->update(['photo' => $photo_path]);
+            }
+
+            $dataExcept = $request->except('_token','id','photo','password','repassword');
+
+            //if($request->has('password'))
+              //  $dataExcept['password'] = $request->password;
+
+            //return $dataExcept;
+
+            Admin::where('id',$id)->update(
+                $dataExcept
+            );
+
+            return redirect()->route('employee.index')->with(['success' => "employee updated successfully"]);
+
+        } catch (Exception $e) {
+            return redirect()->route('employee.index')->with(['error' => "some error"]);
+        }
     }
 
     public function destroy($id)
