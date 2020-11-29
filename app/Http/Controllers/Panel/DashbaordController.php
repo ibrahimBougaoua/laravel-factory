@@ -9,6 +9,6 @@ class DashbaordController extends Controller
 {
     public function index()
     {
-    	return view('panel.auth.login');
+    	return view('panel.dashboard.dashboard');
     }
 }
