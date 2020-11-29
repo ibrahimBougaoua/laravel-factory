@@ -65,8 +65,16 @@ class EmployeeController extends Controller
     	return 'update';
     }
 
-    public function destroy()
+    public function destroy($id)
     {
-    	return 'destroy';
+    	try {
+    		$employee = Admin::find($id);
+    		if(!$employee)
+    			return redirect()->route('employee.index')->with(['error' => "This employee desn't exsits"]);
+    		$employee->delete();
+    		return redirect()->route('employee.index')->with(['success' => 'Employee delete successfully']);
+    	} catch (Exception $e) {
+    		return redirect()->route('employee.index')->with(['error' => 'Some error']);
+    	}
     }
 }
