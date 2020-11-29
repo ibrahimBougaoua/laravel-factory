@@ -23,7 +23,7 @@ Route::group(['prefix' => 'panel','middleware' => 'auth:admin'],function(){
        	      Route::post('/update','App\Http\Controllers\Panel\EmployeeController@update')->name('employee.update');
        	      Route::get('/create','App\Http\Controllers\Panel\EmployeeController@create')->name('employee.create');
        	      Route::post('/store','App\Http\Controllers\Panel\EmployeeController@store')->name('employee.store');
-       	      Route::get('/show','App\Http\Controllers\Panel\EmployeeController@show')->name('employee.show');
+       	      Route::get('/show/{id}','App\Http\Controllers\Panel\EmployeeController@show')->name('employee.show');
        	      Route::get('/delete/{id}','App\Http\Controllers\Panel\EmployeeController@destroy')->name('employee.delete');
        });
        

@@ -13,6 +13,7 @@
                     <div class="row">
 
                     @include('panel.alerts.success')
+                    @include('panel.alerts.errors')
 
                     <!-- Employees -->
                     <div class="card shadow mb-4">
@@ -28,7 +29,6 @@
                                             <th>Last name</th>
                                             <th>E-mail</th>
                                             <th>Gender</th>
-                                            <th>Phone</th>
                                             <th>City</th>
                                             <th>Status</th>
                                             <th>View</th>
@@ -42,7 +42,6 @@
                                             <th>Last name</th>
                                             <th>E-mail</th>
                                             <th>Gender</th>
-                                            <th>Phone</th>
                                             <th>City</th>
                                             <th>Status</th>
                                             <th>View</th>
@@ -57,11 +56,10 @@
                                             <td>{{$employee->last_name}}</td>
                                             <td>{{$employee->email}}</td>
                                             <td>{{$employee->gender}}</td>
-                                            <td>{{$employee->phone}}</td>
                                             <td>{{$employee->city}}</td>
                                             <td>{{$employee->status}}</td>
                                             <td>        
-                                                <a href="#" class="btn btn-primary btn-icon-split">
+                                                <a href="{{ route('employee.show',$employee->id) }}" class="btn btn-primary btn-icon-split">
                                                     <span class="icon text-white-50">
                                                         <i class="fas fa-flag"></i>
                                                     </span>

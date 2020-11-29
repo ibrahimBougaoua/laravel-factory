@@ -50,9 +50,16 @@ class EmployeeController extends Controller
     	}
     }
 
-    public function show()
+    public function show($id)
     {
-    	return 'show';
+    	try {
+    		$employee = Admin::find($id);
+    		if ( ! $employee )
+    			return redirect()->route('employee.show')->with(['error' => "this employee does't exists"]);
+    		return view('panel.employee.show',compact('employee'));
+    	} catch (Exception $e) {
+    		return redirect()->route('employee.show')->with(['error' => 'some error']);
+    	}
     }
 
     public function edit()
@@ -70,7 +77,7 @@ class EmployeeController extends Controller
     	try {
     		$employee = Admin::find($id);
     		if(!$employee)
-    			return redirect()->route('employee.index')->with(['error' => "This employee desn't exsits"]);
+    			return redirect()->route('employee.index')->with(['error' => "This employee does not exist"]);
     		$employee->delete();
     		return redirect()->route('employee.index')->with(['success' => 'Employee delete successfully']);
     	} catch (Exception $e) {
