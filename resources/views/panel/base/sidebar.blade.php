@@ -77,17 +77,17 @@
                 </div>
             </li>
 
-            <!-- point of sale -->
+            <!-- sales men -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pointofsale"
-                    aria-expanded="true" aria-controls="pointofsale">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#salesman"
+                    aria-expanded="true" aria-controls="salesman">
                     <i class="fas fa-fw fa-wrench"></i>
-                    <span>sales men</span>
+                    <span>Sales men</span>
                 </a>
-                <div id="pointofsale" class="collapse" aria-labelledby="headingUtilities"
+                <div id="salesman" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">point of sale :</h6>
+                        <h6 class="collapse-header">sales men :</h6>
                         <a class="collapse-item" href="{{ route('salesman.index') }}">All sales men</a>
                         <a class="collapse-item" href="{{ route('salesman.create') }}">Create new sales man</a>
                     </div>

@@ -39,4 +39,5 @@ class PointOfSale extends Model
             return 'Deactivated';
         return 'Active';
     }
+
 }

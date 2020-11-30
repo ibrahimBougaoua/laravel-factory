@@ -49,6 +49,17 @@ Route::group(['prefix' => 'panel','middleware' => 'auth:admin'],function(){
                     Route::get('/show/{id}','App\Http\Controllers\Panel\PointOfSaleController@show')->name('pointofsale.show');
                     Route::get('/delete/{id}','App\Http\Controllers\Panel\PointOfSaleController@destroy')->name('pointofsale.delete');
        });
+
+       /* sales man routing */
+       Route::group(['prefix' => 'salesman'],function(){
+                    Route::get('/','App\Http\Controllers\Panel\SalesManController@index')->name('salesman.index');
+                    Route::get('/edit/{employee_id}/{point_sale_id}/{date}','App\Http\Controllers\Panel\SalesManController@edit')->name('salesman.edit');
+                    Route::post('/update/{employee_id}/{point_sale_id}/{date}','App\Http\Controllers\Panel\SalesManController@update')->name('salesman.update');
+                    Route::get('/create','App\Http\Controllers\Panel\SalesManController@create')->name('salesman.create');
+                    Route::post('/store','App\Http\Controllers\Panel\SalesManController@store')->name('salesman.store');
+                    Route::get('/show/{id}','App\Http\Controllers\Panel\SalesManController@show')->name('salesman.show');
+                    Route::get('/delete/{employee_id}/{point_sale_id}/{date}','App\Http\Controllers\Panel\SalesManController@destroy')->name('salesman.delete');
+       });
        
        Route::get('/logout','App\Http\Controllers\Panel\LoginController@logOut')->name('panel.logout');
 });
