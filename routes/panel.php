@@ -72,6 +72,17 @@ Route::group(['prefix' => 'panel','middleware' => 'auth:admin'],function(){
                     Route::get('/delete/{id}','App\Http\Controllers\Panel\CategoryController@destroy')->name('category.delete');
        });
 
+       /* products routing */
+       Route::group(['prefix' => 'product'],function(){
+                    Route::get('/','App\Http\Controllers\Panel\ProductController@index')->name('product.index');
+                    Route::get('/edit/{id}','App\Http\Controllers\Panel\ProductController@edit')->name('product.edit');
+                    Route::post('/update/{id}','App\Http\Controllers\Panel\ProductController@update')->name('product.update');
+                    Route::get('/create','App\Http\Controllers\Panel\ProductController@create')->name('product.create');
+                    Route::post('/store','App\Http\Controllers\Panel\ProductController@store')->name('product.store');
+                    Route::get('/show/{id}','App\Http\Controllers\Panel\ProductController@show')->name('product.show');
+                    Route::get('/delete/{id}','App\Http\Controllers\Panel\ProductController@destroy')->name('product.delete');
+       });
+
        Route::get('/logout','App\Http\Controllers\Panel\LoginController@logOut')->name('panel.logout');
 });
 

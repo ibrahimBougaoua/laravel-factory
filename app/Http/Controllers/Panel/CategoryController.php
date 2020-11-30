@@ -17,7 +17,8 @@ class CategoryController extends Controller
     }
 
     public function create()
-    {   $categories = Category::getOnlyMyCategories()->get()
+    {   
+    	$categories = Category::getOnlyMyCategories()->get();
     	return view('panel.category.create',compact('categories'));
     }
 
@@ -26,19 +27,19 @@ class CategoryController extends Controller
     	try {
     		if (Auth::check()) {
                 
-                $subcate_id = $request->subcate_id;
+                $subcate_id = $request->subcateid;
     			if ( ! Category::find($subcate_id) )
     				$subcate_id = 0;
 
-	    		$photo_path = "";
-	    		if($request->has('photo'))
-	    			$photo_path = upload_image('category/',$request->photo);
+	    		//$photo_path = "";
+	    		//if($request->has('photo'))
+	    		//	$photo_path = upload_image('category/',$request->photo);
 	    		
                 $category = Category::create([
 	    			'name' => $request->name,
 	    			'slug' => $request->slug,
 	    			'description' => $request->description,
-	    			'photo' => $photo_path,
+	    		//	'photo' => $photo_path,
 	    			'subcateid' => $subcate_id,
 	    			'employee_id' => Auth::id(),
 	    		]);
@@ -78,7 +79,8 @@ class CategoryController extends Controller
             if($category->employee_id != Auth::id())
                 return redirect()->route('category.index')->with(['error' => "this category does't exists"]);
             
-            return view('panel.category.edit',compact('category'));
+    	    $categories = Category::getOnlyMyCategories()->get();
+            return view('panel.category.edit',compact('category','categories'));
         } catch (Exception $e) {
             return redirect()->route('category.edit')->with(['error' => 'some error']);
         }

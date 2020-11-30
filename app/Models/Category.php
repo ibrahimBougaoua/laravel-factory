@@ -35,7 +35,7 @@ class Category extends Model
 
     public function scopeGetOnlyMyCategories($query)
     {
-    	return $query->where('id',Auth::id());
+    	return $query->where('employee_id',Auth::id());
     }
 
     public function getPhotoAttribute($value)

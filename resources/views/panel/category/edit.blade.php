@@ -18,7 +18,7 @@
                                     <h6 class="m-0 font-weight-bold text-primary">Update category</h6>
                                 </div>
                                 <div class="card-body">
-                                    <form action="{{ route('category.update') }}" method="POST" enctype="multipart/form-data">
+                                    <form action="{{ route('category.update',$category->id) }}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <input type="hidden" name="id" value="{{ $category->id }}" />
                                         <div class="form-row">
@@ -38,17 +38,18 @@
                                       </div>
                                       <div class="form-group col-md-6">
                                         <label for="exampleInputEmail1">Descrition</label>
-                                        <input type="text" name="descrition" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{ $category->descrition }}">
-                                        @error('descrition')
+                                        <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="3">{{ $category->description }}</textarea>
+                                        @error('description')
                                         <span class="text-danger"><small>{{$message}}</small></span>
                                         @enderror
                                       </div>
                                       <div class="form-group col-md-6">
                                         <label for="exampleFormControlSelect1">Parent/Child</label>
-                                        <select class="form-control" name="employee_id" id="exampleFormControlSelect1">
+                                        <select class="form-control" name="subcateid" id="exampleFormControlSelect1">
+                                        <option value="0">Parent</option>
                                         @foreach($categories as $_category)
-                                          @if($_category == $category->id)
-                                            <option value="{{ $category->id }}" selected="selected">
+                                          @if($_category->id == $category->id)
+                                            <option value="{{ $_category->id }}" selected="selected">
                                               @if($category->subcateid == 0)
                                                 Parent - {{ $category->name }}
                                               @else
@@ -56,11 +57,11 @@
                                               @endif
                                             </option>
                                           @else
-                                            <option value="{{ $category->id }}">
-                                              @if($category->subcateid == 0)
-                                                Parent - {{ $category->name }}
+                                            <option value="{{ $_category->id }}">
+                                              @if($_category->subcateid == 0)
+                                                Parent - {{ $_category->name }}
                                               @else
-                                                Child - {{ $category->name }}
+                                                Child - {{ $_category->name }}
                                               @endif
                                             </option>
                                           @endif
@@ -75,7 +76,7 @@
                                           <label class="custom-file-label" for="customFile">Choose file</label>
                                         </div>
                                       </div>
-                                      <button type="submit" class="btn btn-primary">Create new Factory</button>
+                                      <button type="submit" class="btn btn-primary">Update</button>
                                     </form>
                                 </div>
                             </div>

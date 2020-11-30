@@ -37,25 +37,25 @@
                                       </div>
                                       <div class="form-group col-md-6">
                                         <label for="exampleInputEmail1">Descrition</label>
-                                        <input type="text" name="descrition" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Descrition">
+                                        <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Enter Descrition"></textarea>
                                         @error('descrition')
                                         <span class="text-danger"><small>{{$message}}</small></span>
                                         @enderror
                                       </div>
                                       <div class="form-group col-md-6">
                                         <label for="exampleFormControlSelect1">Parent/Child</label>
-                                        <select class="form-control" name="employee_id" id="exampleFormControlSelect1">
-                                        @foreach($categories as $category)
-                                          <option value="{{ $category->id }}">
-                                            @if($category->subcateid == 0)
-                                              Parent - {{ $category->name }}
-                                            @else
-                                              Child - {{ $category->name }}
-                                            @endif
-                                          </option>
-                                        @endforeach
+                                        <select class="form-control" name="subcateid" id="exampleFormControlSelect1">
+                                        <option value="0">Parent</option>
+                                          @foreach($categories as $category)
+                                            <option value="{{ $category->id }}">
+                                              @if($category->subcateid == 0)
+                                                Parent - {{ $category->name }}
+                                              @else
+                                                Child - {{ $category->name }}
+                                              @endif
+                                            </option>
+                                          @endforeach
                                         </select>
-                                      </div>
                                       </div>
                                       <div class="form-group col-md-6">
                                         <label for="exampleFormControlTextarea1">Photo</label>
@@ -64,7 +64,7 @@
                                           <label class="custom-file-label" for="customFile">Choose file</label>
                                         </div>
                                       </div>
-                                      <button type="submit" class="btn btn-primary">Create new Factory</button>
+                                      <button type="submit" class="btn btn-primary">Create new Category</button>
                                     </form>
                                 </div>
                             </div>

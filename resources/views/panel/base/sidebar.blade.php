@@ -96,17 +96,34 @@
 
             <!-- sales men -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#salesman"
-                    aria-expanded="true" aria-controls="salesman">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#categories"
+                    aria-expanded="true" aria-controls="categories">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Categories</span>
                 </a>
-                <div id="salesman" class="collapse" aria-labelledby="headingUtilities"
+                <div id="categories" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">categories :</h6>
                         <a class="collapse-item" href="{{ route('category.index') }}">All categories</a>
                         <a class="collapse-item" href="{{ route('category.create') }}">Create new category</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- products men -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#products"
+                    aria-expanded="true" aria-controls="products">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>products</span>
+                </a>
+                <div id="products" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">products :</h6>
+                        <a class="collapse-item" href="{{ route('product.index') }}">All products</a>
+                        <a class="collapse-item" href="{{ route('product.create') }}">Create new product</a>
                     </div>
                 </div>
             </li>
