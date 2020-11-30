@@ -17,8 +17,8 @@ class CategoryController extends Controller
     }
 
     public function create()
-    {
-    	return view('panel.category.create');
+    {   $categories = Category::getOnlyMyCategories()->get()
+    	return view('panel.category.create',compact('categories'));
     }
 
     public function store(CategoryRequest $request)
@@ -39,8 +39,7 @@ class CategoryController extends Controller
 	    			'slug' => $request->slug,
 	    			'description' => $request->description,
 	    			'photo' => $photo_path,
-	    			'status' => $request->status,
-	    			'subcate_id' => $subcate_id,
+	    			'subcateid' => $subcate_id,
 	    			'employee_id' => Auth::id(),
 	    		]);
 	    		

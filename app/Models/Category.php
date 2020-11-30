@@ -21,7 +21,7 @@ class Category extends Model
         'description',
         'photo',
         'status',
-        'subcate_id',
+        'subcateid',
         'employee_id'
     ];
 
@@ -38,7 +38,7 @@ class Category extends Model
     	return $query->where('id',Auth::id());
     }
 
-    public function getLogoAttribute($value)
+    public function getPhotoAttribute($value)
     {
         if ( ! empty($value) )
             return asset('assets/' . $value);
@@ -50,5 +50,12 @@ class Category extends Model
         if ( $value == 0 )
             return 'Deactivated';
         return 'Active';
+    }
+
+    public function getSubcateidAttribute($value)
+    {
+        if ( $value == 0 )
+            return 'Parent';
+        return 'Child';
     }
 }
