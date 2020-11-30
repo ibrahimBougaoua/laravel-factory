@@ -83,6 +83,17 @@ Route::group(['prefix' => 'panel','middleware' => 'auth:admin'],function(){
                     Route::get('/delete/{id}','App\Http\Controllers\Panel\ProductController@destroy')->name('product.delete');
        });
 
+       /* stores routing */
+       Route::group(['prefix' => 'store'],function(){
+                    Route::get('/','App\Http\Controllers\Panel\StoreController@index')->name('store.index');
+                    Route::get('/edit/{id}','App\Http\Controllers\Panel\StoreController@edit')->name('store.edit');
+                    Route::post('/update/{id}','App\Http\Controllers\Panel\StoreController@update')->name('store.update');
+                    Route::get('/create','App\Http\Controllers\Panel\StoreController@create')->name('store.create');
+                    Route::post('/store','App\Http\Controllers\Panel\StoreController@store')->name('store.store');
+                    Route::get('/show/{id}','App\Http\Controllers\Panel\StoreController@show')->name('store.show');
+                    Route::get('/delete/{id}','App\Http\Controllers\Panel\StoreController@destroy')->name('store.delete');
+       });
+
        Route::get('/logout','App\Http\Controllers\Panel\LoginController@logOut')->name('panel.logout');
 });
 
