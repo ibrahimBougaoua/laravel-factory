@@ -35,6 +35,14 @@
                                         <span class="text-danger"><small>{{$message}}</small></span>
                                         @enderror
                                       </div>
+                                      <div class="form-group col-md-6">
+                                        <label for="exampleFormControlSelect1">Select a factory</label>
+                                        <select class="form-control" name="factory" id="exampleFormControlSelect1">
+                                        @foreach($factories as $factory)
+                                          <option value="{{ $factory->id }}">{{ $factory->name }}</option>
+                                        @endforeach
+                                        </select>
+                                      </div>
                                       <button type="submit" class="btn btn-primary">Create new point of sale</button>
                                     </form>
                                 </div>

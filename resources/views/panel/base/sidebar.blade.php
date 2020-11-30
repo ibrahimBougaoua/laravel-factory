@@ -77,6 +77,23 @@
                 </div>
             </li>
 
+            <!-- point of sale -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pointofsale"
+                    aria-expanded="true" aria-controls="pointofsale">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>sales men</span>
+                </a>
+                <div id="pointofsale" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">point of sale :</h6>
+                        <a class="collapse-item" href="{{ route('salesman.index') }}">All sales men</a>
+                        <a class="collapse-item" href="{{ route('salesman.create') }}">Create new sales man</a>
+                    </div>
+                </div>
+            </li>
+
             <!-- Divider -->
             <hr class="sidebar-divider">
 

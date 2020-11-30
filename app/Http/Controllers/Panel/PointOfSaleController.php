@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\PointOfSale;
+use App\Models\Factory;
 use App\Http\Requests\PointOfSaleRequest;
 
 class PointOfSaleController extends Controller
@@ -18,17 +19,21 @@ class PointOfSaleController extends Controller
 
     public function create()
     {
-    	return view('panel.pointofsale.create');
+        $factories = Factory::all();
+    	return view('panel.pointofsale.create',compact('factories'));
     }
 
     public function store(PointOfSaleRequest $request)
     {
     	try {
+                $factory = Factory::find($request->factory);
+                if( ! $factory )
+                    return redirect()->route('pointofsale.index')->with(['error' => "this factory does't exists"]);
 
                 $pointOfSale = PointOfSale::create([
 	    			'name' => $request->name,
 	    			'address' => $request->address,
-	    			'factory_id' => 1
+	    			'factory_id' => $request->factory
 	    		]);
 	    		
                 //Notification::send($pointofsale,new EmployeeCreated($pointofsale));
@@ -60,7 +65,9 @@ class PointOfSaleController extends Controller
             if ( ! $pointOfSale )
                 return redirect()->route('pointofsale.index')->with(['error' => "this point of sale does't exists"]);
 
-            return view('panel.pointofsale.edit',compact('pointOfSale'));
+            $factories = Factory::all();
+
+            return view('panel.pointofsale.edit',compact('pointOfSale','factories'));
         } catch (Exception $e) {
             return redirect()->route('pointofsale.edit')->with(['error' => 'some error']);
         }
@@ -75,7 +82,7 @@ class PointOfSaleController extends Controller
             return redirect()->route('pointofsale.index')->with(['error' => "this point of sale does't exists"]);
 
             PointOfSale::where('id',$id)->update(
-                $request->all()
+                $request->except(['_token'])
             );
 
             return redirect()->route('pointofsale.index')->with(['success' => "point of sale updated successfully"]);

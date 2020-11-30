@@ -28,6 +28,7 @@
                                             <th>Name</th>
                                             <th>Address</th>
                                             <th>Status</th>
+                                            <th>Factory</th>
                                             <th>Created at</th>
                                             <th>View</th>
                                             <th>Edit</th>
@@ -39,6 +40,7 @@
                                             <th>Name</th>
                                             <th>Address</th>
                                             <th>Status</th>
+                                            <th>Factory</th>
                                             <th>Created at</th>
                                             <th>View</th>
                                             <th>Edit</th>
@@ -51,6 +53,14 @@
                                             <td>{{$pointOfSale->name}}</td>
                                             <td>{{$pointOfSale->address}}</td>
                                             <td>{{$pointOfSale->status}}</td>
+                                            <td>
+                                                <a href="{{ route('factory.show',$pointOfSale->factory_id) }}" class="btn btn-primary btn-icon-split">
+                                                    <span class="icon text-white-50">
+                                                        <i class="fas fa-flag"></i>
+                                                    </span>
+                                                    <span class="text">View</span>
+                                                </a>
+                                            </td>
                                             <td>{{get_date($pointOfSale->created_at)}}</td>
                                             <td>        
                                                 <a href="{{ route('pointofsale.show',$pointOfSale->id) }}" class="btn btn-sm btn-primary btn-icon-split">

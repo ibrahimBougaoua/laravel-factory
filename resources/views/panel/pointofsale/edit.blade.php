@@ -36,6 +36,18 @@
                                         <span class="text-danger"><small>{{$message}}</small></span>
                                         @enderror
                                       </div>
+                                      <div class="form-group col-md-6">
+                                        <label for="exampleFormControlSelect1">Select a factory</label>
+                                        <select class="form-control" name="factory_id" id="exampleFormControlSelect1">
+                                        @foreach($factories as $factory)
+                                          @if($factory->id == $pointOfSale->factory_id)
+                                            <option value="{{ $factory->id }}" selected="selected">{{ $factory->name }}</option>
+                                          @else
+                                            <option value="{{ $factory->id }}">{{ $factory->name }}</option>
+                                          @endif
+                                        @endforeach
+                                        </select>
+                                      </div>
                                       <button type="submit" class="btn btn-primary">Update</button>
                                     </form>
                                 </div>
