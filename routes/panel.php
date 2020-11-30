@@ -61,6 +61,17 @@ Route::group(['prefix' => 'panel','middleware' => 'auth:admin'],function(){
                     Route::get('/delete/{employee_id}/{point_sale_id}/{date}','App\Http\Controllers\Panel\SalesManController@destroy')->name('salesman.delete');
        });
        
+       /* categories routing */
+       Route::group(['prefix' => 'category'],function(){
+                    Route::get('/','App\Http\Controllers\Panel\CategoryController@index')->name('category.index');
+                    Route::get('/edit/{id}','App\Http\Controllers\Panel\CategoryController@edit')->name('category.edit');
+                    Route::post('/update/{id}','App\Http\Controllers\Panel\CategoryController@update')->name('category.update');
+                    Route::get('/create','App\Http\Controllers\Panel\CategoryController@create')->name('category.create');
+                    Route::post('/store','App\Http\Controllers\Panel\CategoryController@store')->name('category.store');
+                    Route::get('/show/{id}','App\Http\Controllers\Panel\CategoryController@show')->name('category.show');
+                    Route::get('/delete/{id}','App\Http\Controllers\Panel\CategoryController@destroy')->name('category.delete');
+       });
+
        Route::get('/logout','App\Http\Controllers\Panel\LoginController@logOut')->name('panel.logout');
 });
 

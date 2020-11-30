@@ -62,6 +62,13 @@ return [
             'visibility' => 'public',
         ],
 
+        'category' => [
+            'driver' => 'local',
+            'root' => base_path() . '/public/assets/images/category',
+            'url' => env('APP_URL').'/public',
+            'visibility' => 'public',
+        ],
+
         'factory' => [
             'driver' => 'local',
             'root' => base_path() . '/public/assets/images/factory',
