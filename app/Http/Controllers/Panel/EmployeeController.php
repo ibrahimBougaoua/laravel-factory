@@ -56,7 +56,7 @@ class EmployeeController extends Controller
     public function show($id)
     {
     	try {
-    		$employee = Admin::find($id);
+    		$employee = Admin::with('getMyEmployees')->find($id);
     		if ( ! $employee )
     			return redirect()->route('employee.index')->with(['error' => "this employee does't exists"]);
 
