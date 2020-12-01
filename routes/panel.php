@@ -53,12 +53,12 @@ Route::group(['prefix' => 'panel','middleware' => 'auth:admin'],function(){
        /* sales man routing */
        Route::group(['prefix' => 'salesman'],function(){
                     Route::get('/','App\Http\Controllers\Panel\SalesManController@index')->name('salesman.index');
-                    Route::get('/edit/{employee_id}/{point_sale_id}/{date}','App\Http\Controllers\Panel\SalesManController@edit')->name('salesman.edit');
-                    Route::post('/update/{employee_id}/{point_sale_id}/{date}','App\Http\Controllers\Panel\SalesManController@update')->name('salesman.update');
+                    Route::get('/edit/{id}','App\Http\Controllers\Panel\SalesManController@edit')->name('salesman.edit');
+                    Route::post('/update/{id}','App\Http\Controllers\Panel\SalesManController@update')->name('salesman.update');
                     Route::get('/create','App\Http\Controllers\Panel\SalesManController@create')->name('salesman.create');
                     Route::post('/store','App\Http\Controllers\Panel\SalesManController@store')->name('salesman.store');
                     Route::get('/show/{id}','App\Http\Controllers\Panel\SalesManController@show')->name('salesman.show');
-                    Route::get('/delete/{employee_id}/{point_sale_id}/{date}','App\Http\Controllers\Panel\SalesManController@destroy')->name('salesman.delete');
+                    Route::get('/delete/{id}','App\Http\Controllers\Panel\SalesManController@destroy')->name('salesman.delete');
        });
        
        /* categories routing */
@@ -86,12 +86,12 @@ Route::group(['prefix' => 'panel','middleware' => 'auth:admin'],function(){
        /* stores routing */
        Route::group(['prefix' => 'store'],function(){
                     Route::get('/','App\Http\Controllers\Panel\StoreController@index')->name('store.index');
-                    Route::get('/edit/{point_sale_id}/{product_id}','App\Http\Controllers\Panel\StoreController@edit')->name('store.edit');
-                    Route::post('/update/{point_sale_id}/{product_id}','App\Http\Controllers\Panel\StoreController@update')->name('store.update');
+                    Route::get('/edit/{id}','App\Http\Controllers\Panel\StoreController@edit')->name('store.edit');
+                    Route::post('/update/{id}','App\Http\Controllers\Panel\StoreController@update')->name('store.update');
                     Route::get('/create','App\Http\Controllers\Panel\StoreController@create')->name('store.create');
                     Route::post('/store','App\Http\Controllers\Panel\StoreController@store')->name('store.store');
-                    Route::get('/show/{point_sale_id}/{product_id}','App\Http\Controllers\Panel\StoreController@show')->name('store.show');
-                    Route::get('/delete/{point_sale_id}/{product_id}','App\Http\Controllers\Panel\StoreController@destroy')->name('store.delete');
+                    Route::get('/show/{id}','App\Http\Controllers\Panel\StoreController@show')->name('store.show');
+                    Route::get('/delete/{id}','App\Http\Controllers\Panel\StoreController@destroy')->name('store.delete');
        });
 
        Route::get('/logout','App\Http\Controllers\Panel\LoginController@logOut')->name('panel.logout');

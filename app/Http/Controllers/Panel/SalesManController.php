@@ -14,7 +14,7 @@ class SalesManController extends Controller
 {
     public function index()
     {
-    	$salesmen = SalesMan::getSalesMan();
+    	$salesmen = SalesMan::getSalesMen();
     	return view('panel.salesman.index',compact('salesmen'));
     }
 
@@ -56,31 +56,26 @@ class SalesManController extends Controller
     public function show($id)
     {
     	try {
-    		$salesMan = SalesMan::find($id);
+    		$salesMan = SalesMan::getSalesManById($id);
     		if ( ! $salesMan )
-    			return redirect()->route('pointofsale.index')->with(['error' => "this point of sale does't exists"]);
+    			return redirect()->route('salesman.index')->with(['error' => "this point of sale does't exists"]);
 
-    		return view('panel.pointofsale.show',compact('salesMan'));
+    		return view('panel.salesman.show',compact('salesMan'));
     	} catch (Exception $e) {
-    		return redirect()->route('pointofsale.show')->with(['error' => 'some error']);
+    		return redirect()->route('salesman.show')->with(['error' => 'some error']);
     	}
     }
 
-    public function edit($employee_id,$point_sale_id,$date)
+    public function edit($id)
     {
     	try {
-    		$salesMan = SalesMan::where([
-    			['manage_id', '=', Auth::id()],
-    			['employee_id', '=', $employee_id],
-    			['point_sale_id', '=', $point_sale_id],
-    			['date', '=', $date]
-    		]);
+    		$salesMan = SalesMan::find($id);
     		
             if( ! $salesMan )
     			return redirect()->route('salesman.index')->with(['error' => "This sales man does not exist"]);
 
-        $pointsOfSales = PointOfSale::all();
-        $employees = Admin::all();
+            $pointsOfSales = PointOfSale::all();
+            $employees = Admin::all();
 
             return view('panel.salesman.edit',compact('pointsOfSales','employees','salesMan'));
         } catch (Exception $e) {
@@ -88,15 +83,10 @@ class SalesManController extends Controller
         }
     }
 
-    public function update($employee_id,$point_sale_id,$date,PointOfSaleRequest $request)
+    public function update($id,SalesManRequest $request)
     {
     	try {
-            $salesMan = SalesMan::where([
-    			['manage_id', '=', Auth::id()],
-    			['employee_id', '=', $employee_id],
-    			['point_sale_id', '=', $point_sale_id],
-    			['date', '=', $date]
-    		]);
+            $salesMan = SalesMan::find($id);
     		
             if( ! $salesMan )
     			return redirect()->route('salesman.index')->with(['error' => "This sales man does not exist"]);
@@ -112,15 +102,10 @@ class SalesManController extends Controller
         }
     }
 
-    public function destroy($employee_id,$point_sale_id,$date)
+    public function destroy($id)
     {
     	try {
-    		$salesMan = SalesMan::where([
-    			['manage_id', '=', Auth::id()],
-    			['employee_id', '=', $employee_id],
-    			['point_sale_id', '=', $point_sale_id],
-    			['date', '=', $date]
-    		]);
+    		$salesMan = SalesMan::find($id);
     		
             if( ! $salesMan )
     			return redirect()->route('salesman.index')->with(['error' => "This sales man does not exist"]);

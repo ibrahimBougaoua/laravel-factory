@@ -58,7 +58,7 @@
                                             <td>{{$store->quantity_sold}}</td>
                                             <td>{{$store->status}}</td>
                                             <td>        
-                                                <a href="{{ route('store.show',[$store->point_sale_id,$store->product_id]) }}" class="btn btn-sm btn-primary btn-icon-split">
+                                                <a href="{{ route('store.show',$store->id) }}" class="btn btn-sm btn-primary btn-icon-split">
                                                     <span class="icon text-white-50">
                                                         <i class="fas fa-info-circle"></i>
                                                     </span>
@@ -66,7 +66,7 @@
                                                 </a>
                                             </td>
                                             <td>
-                                                <a href="{{ route('store.edit',[$store->point_sale_id,$store->product_id]) }}" class="btn btn-sm btn-success btn-icon-split">
+                                                <a href="{{ route('store.edit',$store->id) }}" class="btn btn-sm btn-success btn-icon-split">
                                                     <span class="icon text-white-50">
                                                         <i class="fas fa-check"></i>
                                                     </span>
@@ -74,7 +74,7 @@
                                                 </a>
                                             </td>
                                             <td>
-                                                <a href="#" class="btn btn-sm btn-danger btn-icon-split" data-toggle="modal" data-target="#modal-{{ $store->point_sale_id }}-{{ $store->product_id }}">
+                                                <a href="#" class="btn btn-sm btn-danger btn-icon-split" data-toggle="modal" data-target="#modal-{{ $store->id }}">
                                                     <span class="icon text-white-50">
                                                         <i class="fas fa-trash"></i>
                                                     </span>
@@ -82,7 +82,7 @@
                                                 </a>
 
                                                 <!-- delete Modal-->
-                                                <div class="modal fade" id="modal-{{ $store->point_sale_id }}-{{ $store->product_id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                                <div class="modal fade" id="modal-{{ $store->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                                                     aria-hidden="true">
                                                     <div class="modal-dialog" role="document">
                                                         <div class="modal-content">
@@ -95,7 +95,7 @@
                                                             <div class="modal-body">If you delete this store, all of their work will disappear.</div>
                                                             <div class="modal-footer">
                                                                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                                                                <a class="btn btn-danger" href="{{ route('store.delete',[$store->point_sale_id,$store->product_id]) }}">Delete</a>
+                                                                <a class="btn btn-danger" href="{{ route('store.delete',$store->id) }}">Delete</a>
                                                             </div>
                                                         </div>
                                                     </div>

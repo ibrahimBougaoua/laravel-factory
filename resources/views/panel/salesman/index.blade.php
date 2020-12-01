@@ -36,9 +36,9 @@
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>manage_id</th>
-                                            <th>employee_id</th>
-                                            <th>point_sale_id</th>
+                                            <th>First Name</th>
+                                            <th>Email</th>
+                                            <th>Name</th>
                                             <th>Created at</th>
                                             <th>View</th>
                                             <th>Edit</th>
@@ -53,7 +53,7 @@
                                             <td>{{$salesman->name}}</td>
                                             <td>{{get_date($salesman->date)}}</td>
                                             <td>        
-                                                <a href="{{ route('salesman.show',$salesman->employee_id) }}" class="btn btn-sm btn-primary btn-icon-split">
+                                                <a href="{{ route('salesman.show',$salesman->id) }}" class="btn btn-sm btn-primary btn-icon-split">
                                                     <span class="icon text-white-50">
                                                         <i class="fas fa-info-circle"></i>
                                                     </span>
@@ -61,7 +61,7 @@
                                                 </a>
                                             </td>
                                             <td>
-                                                <a href="{{ route('salesman.edit',[$salesman->employee_id,$salesman->point_sale_id,$salesman->date]) }}" class="btn btn-sm btn-success btn-icon-split">
+                                                <a href="{{ route('salesman.edit',$salesman->id) }}" class="btn btn-sm btn-success btn-icon-split">
                                                     <span class="icon text-white-50">
                                                         <i class="fas fa-check"></i>
                                                     </span>
@@ -69,7 +69,7 @@
                                                 </a>
                                             </td>
                                             <td>
-                                                <a href="#" class="btn btn-sm btn-danger btn-icon-split" data-toggle="modal" data-target="#modal-{{ $salesman->employee_id }}">
+                                                <a href="#" class="btn btn-sm btn-danger btn-icon-split" data-toggle="modal" data-target="#modal-{{ $salesman->id }}">
                                                     <span class="icon text-white-50">
                                                         <i class="fas fa-trash"></i>
                                                     </span>
@@ -77,7 +77,7 @@
                                                 </a>
 
                                                 <!-- delete Modal-->
-                                                <div class="modal fade" id="modal-{{ $salesman->employee_id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                                <div class="modal fade" id="modal-{{ $salesman->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                                                     aria-hidden="true">
                                                     <div class="modal-dialog" role="document">
                                                         <div class="modal-content">
@@ -90,7 +90,7 @@
                                                             <div class="modal-body">If you delete this point of sale, all of their work will disappear.</div>
                                                             <div class="modal-footer">
                                                                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                                                                <a class="btn btn-danger" href="{{ route('salesman.delete',[$salesman->employee_id,$salesman->point_sale_id,$salesman->date]) }}">Delete</a>
+                                                                <a class="btn btn-danger" href="{{ route('salesman.delete',$salesman->id) }}">Delete</a>
                                                             </div>
                                                         </div>
                                                     </div>

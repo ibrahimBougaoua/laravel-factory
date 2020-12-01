@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\Builder;
 use DB;
 
 class Store extends Model
@@ -19,6 +20,7 @@ class Store extends Model
      * @var array
      */
     protected $fillable = [
+    	'id',
     	'point_sale_id',
         'product_id',
         'quantity_store',
@@ -52,13 +54,14 @@ class Store extends Model
     	                     'stores.quantity_store',
     	                     'stores.quantity_sold',
     	                     'stores.point_sale_id',
-    	                     'stores.product_id'
+    	                     'stores.product_id',
+    	                     'stores.id'
     	              )->get();
     }
 
-    public static function getStoreByIds($product_id,$point_sale_id)
+    public static function getStoreByIds($id)
     {
-    	return Store::where([['stores.product_id','=',$product_id],['stores.point_sale_id','=',$point_sale_id]])->
+    	return Store::where('stores.id',$id)->
     	            join('products', 'stores.product_id', '=', 'products.id')->
     	            join('point_of_sales', 'stores.point_sale_id', '=', 'point_of_sales.id')->
     	            select('products.name as product_name',
@@ -67,7 +70,8 @@ class Store extends Model
     	                   'stores.quantity_store',
     	                   'stores.quantity_sold',
     	                   'stores.point_sale_id',
-    	                   'stores.product_id'
+    	                   'stores.product_id',
+    	                   'stores.id'
     	            )->first();
     }
 }

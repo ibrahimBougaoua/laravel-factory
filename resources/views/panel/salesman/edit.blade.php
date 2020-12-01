@@ -18,7 +18,7 @@
                                     <h6 class="m-0 font-weight-bold text-primary">Update point of sale</h6>
                                 </div>
                                 <div class="card-body">
-                                    <form action="{{ route('salesman.update',[$salesMan->employee_id,$salesMan->point_sale_id,$salesMan->date]) }}" method="POST" enctype="multipart/form-data">
+                                    <form action="{{ route('salesman.update',$salesMan->id) }}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-row">
                                       <div class="form-group col-md-6">

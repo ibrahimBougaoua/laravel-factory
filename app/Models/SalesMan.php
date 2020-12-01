@@ -40,11 +40,20 @@ class SalesMan extends Model
     	return $query->where('manage_id',Auth::id());
     }
 
-    public static function getSalesMan()
+    public static function getSalesMen()
     {
-    	return SalesMan::join('admins', 'sales_men.employee_id', '=', 'admins.id')->
-    	                      join('point_of_sales', 'sales_men.point_sale_id', '=', 'point_of_sales.id')->
-    	                      select('admins.first_name','admins.email','admins.status','point_of_sales.name','sales_men.date','sales_men.employee_id','sales_men.manage_id','sales_men.point_sale_id')->
-    	                      get();
+        return SalesMan::join('admins', 'sales_men.employee_id', '=', 'admins.id')->
+                              join('point_of_sales', 'sales_men.point_sale_id', '=', 'point_of_sales.id')->
+                              select('admins.first_name','admins.email','admins.status','point_of_sales.name','sales_men.date','sales_men.employee_id','sales_men.manage_id','sales_men.point_sale_id','sales_men.id')->
+                              get();
+    }
+
+    public static function getSalesManById($id)
+    {
+        return SalesMan::where('sales_men.id',$id)->
+                              join('admins', 'sales_men.employee_id', '=', 'admins.id')->
+                              join('point_of_sales', 'sales_men.point_sale_id', '=', 'point_of_sales.id')->
+                              select('admins.first_name','admins.email','admins.status','point_of_sales.name','sales_men.date','sales_men.employee_id','sales_men.manage_id','sales_men.point_sale_id','sales_men.id')->
+                              first();
     }
 }

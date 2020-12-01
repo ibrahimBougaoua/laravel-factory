@@ -54,10 +54,11 @@ class StoreController extends Controller
     	}
     }
 
-    public function show($point_sale_id,$product_id)
+    public function show($id)
     {
     	try {
-    		$store = Store::getStoreByIds($point_sale_id,$product_id);
+    		$store = Store::getStoreByIds($id);
+    		
     		if ( ! $store )
     			return redirect()->route('store.index')->with(['error' => "this store does't exists"]);
 
@@ -67,10 +68,10 @@ class StoreController extends Controller
     	}
     }
 
-    public function edit($point_sale_id,$product_id)
+    public function edit($id)
     {
     	try {
-    		$store = Store::where([['point_sale_id','=',$point_sale_id],['product_id','=',$product_id]])->first();
+    		$store = Store::find($id);
     		
             if( ! $store )
     			return redirect()->route('store.index')->with(['error' => "This store does not exist"]);
@@ -84,10 +85,10 @@ class StoreController extends Controller
         }
     }
 
-    public function update($point_sale_id,$product_id,StoreRequest $request)
+    public function update($id,StoreRequest $request)
     {
     	try {
-    		$store = Store::where([['point_sale_id','=',$point_sale_id],['product_id','=',$product_id]])->first();
+    		$store = Store::find($id);
     		
             if( ! $store )
     			return redirect()->route('store.index')->with(['error' => "This store does not exist"]);
@@ -103,13 +104,10 @@ class StoreController extends Controller
         }
     }
 
-    public function destroy($point_sale_id,$product_id)
+    public function destroy($id)
     {
     	try {
-    		$store = Store::where([
-    			['point_sale_id', '=', $point_sale_id],
-    			['product_id', '=', $product_id]
-    		]);
+    		$store = Store::find($id);
     		
             if( ! $store )
     			return redirect()->route('store.index')->with(['error' => "This store does not exist"]);

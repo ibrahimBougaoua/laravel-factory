@@ -17,7 +17,7 @@
                                     <h6 class="m-0 font-weight-bold text-primary">Update Store</h6>
                                 </div>
                                 <div class="card-body">
-                                    <form action="{{ route('store.update',[$store->point_sale_id,$store->product_id]) }}" method="POST" enctype="multipart/form-data">
+                                    <form action="{{ route('store.update',$store->id) }}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-row">
 
