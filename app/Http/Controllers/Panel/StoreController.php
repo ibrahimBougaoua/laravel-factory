@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Panel;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Models\PointOfSale;
+use App\Models\Product;
 use App\Models\Store;
 use App\Http\Requests\StoreRequest;
 
@@ -12,122 +14,118 @@ class StoreController extends Controller
 {
     public function index()
     {
-    	$salesmen = SalesMan::getSalesMan();
-    	return view('panel.salesman.index',compact('salesmen'));
+    	$stores = Store::getAllStores();
+    	return view('panel.store.index',compact('stores'));
     }
 
     public function create()
     {
         $pointsOfSales = PointOfSale::all();
-        $employees = Admin::all();
-    	return view('panel.salesman.create',compact('pointsOfSales','employees'));
+        $products = Product::all();
+    	return view('panel.store.create',compact('pointsOfSales','products'));
     }
 
-    public function store(SalesManRequest $request)
+    public function store(StoreRequest $request)
     {
     	try {
     		if (Auth::check()) {
 
                 $pointOfSale = PointOfSale::find($request->pointofsale_id);
                 if( ! $pointOfSale )
-                    return redirect()->route('salesman.index')->with(['error' => "this point of sale does't exists"]);
+                    return redirect()->route('store.index')->with(['error' => "this point of sale does't exists"]);
 
-                $employee = Admin::find($request->employee_id);
-                if( ! $employee )
-                    return redirect()->route('salesman.index')->with(['error' => "this employee does't exists"]);
+                $product = Product::find($request->product_id);
+                if( ! $product )
+                    return redirect()->route('salesman.index')->with(['error' => "this product does't exists"]);
 
-                $SalesMan = SalesMan::create([
-	    			'manage_id' => Auth::id(),
-	    			'employee_id' => $request->employee_id,
-	    			'point_sale_id' => $request->pointofsale_id
+                $store = Store::create([
+	    			'point_sale_id' => $request->point_sale_id,
+	    			'product_id' => $request->product_id,
+	    			'quantity_store' => $request->quantity_store,
+	    			'quantity_sold' => $request->quantity_sold,
 	    		]);
 	    		
-                //Notification::send($SalesMan,new EmployeeCreated($SalesMan));
-	    		return redirect()->route('salesman.index')->with(['success' => 'Sales Man added successfully !']);
+                //Notification::send($store,new EmployeeCreated($store));
+	    		return redirect()->route('store.index')->with(['success' => 'Store added successfully !']);
 	    	}
-	    	return redirect()->route('salesman.index')->with(['error' => 'You must be already authenticated !']);
+	    	return redirect()->route('store.index')->with(['error' => 'You must be already authenticated !']);
     	} catch (Exception $e) {
-    		return redirect()->route('salesman.index')->with(['error' => 'You have an error !']);
+    		return redirect()->route('store.index')->with(['error' => 'You have an error !']);
     	}
     }
 
-    public function show($id)
+    public function show($point_sale_id,$product_id)
     {
     	try {
-    		$salesMan = SalesMan::find($id);
-    		if ( ! $salesMan )
-    			return redirect()->route('pointofsale.index')->with(['error' => "this point of sale does't exists"]);
+    		$store = Store::getStoreByIds($point_sale_id,$product_id);
+    		if ( ! $store )
+    			return redirect()->route('store.index')->with(['error' => "this store does't exists"]);
 
-    		return view('panel.pointofsale.show',compact('salesMan'));
+            $store = $store[0];
+    		return view('panel.store.show',compact('store'));
     	} catch (Exception $e) {
-    		return redirect()->route('pointofsale.show')->with(['error' => 'some error']);
+    		return redirect()->route('store.show')->with(['error' => 'some error']);
     	}
     }
 
-    public function edit($employee_id,$point_sale_id,$date)
+    public function edit($point_sale_id,$product_id)
     {
     	try {
-    		$salesMan = SalesMan::where([
-    			['manage_id', '=', Auth::id()],
-    			['employee_id', '=', $employee_id],
+    		$store = Store::where([
     			['point_sale_id', '=', $point_sale_id],
-    			['date', '=', $date]
+    			['product_id', '=', $product_id]
     		]);
     		
-            if( ! $salesMan )
-    			return redirect()->route('salesman.index')->with(['error' => "This sales man does not exist"]);
+            if( ! $store )
+    			return redirect()->route('store.index')->with(['error' => "This store does not exist"]);
 
-        $pointsOfSales = PointOfSale::all();
-        $employees = Admin::all();
+	        $pointsOfSales = PointOfSale::all();
+	        $products = Product::all();
 
-            return view('panel.salesman.edit',compact('pointsOfSales','employees','salesMan'));
+            return view('panel.store.edit',compact('store','pointsOfSales','products'));
         } catch (Exception $e) {
-            return redirect()->route('salesman.edit')->with(['error' => 'some error']);
+            return redirect()->route('store.index')->with(['error' => 'some error']);
         }
     }
 
-    public function update($employee_id,$point_sale_id,$date,PointOfSaleRequest $request)
+    public function update($point_sale_id,$product_id,PointOfSaleRequest $request)
     {
     	try {
-            $salesMan = SalesMan::where([
-    			['manage_id', '=', Auth::id()],
-    			['employee_id', '=', $employee_id],
+    		$store = Store::where([
     			['point_sale_id', '=', $point_sale_id],
-    			['date', '=', $date]
+    			['product_id', '=', $product_id]
     		]);
     		
-            if( ! $salesMan )
-    			return redirect()->route('salesman.index')->with(['error' => "This sales man does not exist"]);
+            if( ! $store )
+    			return redirect()->route('store.index')->with(['error' => "This store does not exist"]);
 
-            $salesMan->update(
-                $request->except(['_token'])
+            $store->update(
+                $store->except(['_token'])
             );
 
-            return redirect()->route('salesman.index')->with(['success' => "sales man updated successfully"]);
+            return redirect()->route('store.index')->with(['success' => "Store updated successfully"]);
 
         } catch (Exception $e) {
-            return redirect()->route('salesman.index')->with(['error' => "some error"]);
+            return redirect()->route('store.index')->with(['error' => "some error"]);
         }
     }
 
-    public function destroy($employee_id,$point_sale_id,$date)
+    public function destroy($point_sale_id,$product_id)
     {
     	try {
-    		$salesMan = SalesMan::where([
-    			['manage_id', '=', Auth::id()],
-    			['employee_id', '=', $employee_id],
+    		$store = Store::where([
     			['point_sale_id', '=', $point_sale_id],
-    			['date', '=', $date]
+    			['product_id', '=', $product_id]
     		]);
     		
-            if( ! $salesMan )
-    			return redirect()->route('salesman.index')->with(['error' => "This sales man does not exist"]);
+            if( ! $store )
+    			return redirect()->route('store.index')->with(['error' => "This store does not exist"]);
 
-            $salesMan->delete();
+            $store->delete();
     		
-            return redirect()->route('salesman.index')->with(['success' => 'sales man delete successfully']);
+            return redirect()->route('store.index')->with(['success' => 'store delete successfully']);
     	} catch (Exception $e) {
-    		return redirect()->route('salesman.index')->with(['error' => "you can't delete this account"]);
+    		return redirect()->route('store.index')->with(['error' => "you can't delete this store"]);
     	}
     }
 }

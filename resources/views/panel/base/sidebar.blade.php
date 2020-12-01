@@ -128,6 +128,23 @@
                 </div>
             </li>
 
+            <!-- stores men -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#stores"
+                    aria-expanded="true" aria-controls="stores">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>stores</span>
+                </a>
+                <div id="stores" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">stores :</h6>
+                        <a class="collapse-item" href="{{ route('store.index') }}">All store</a>
+                        <a class="collapse-item" href="{{ route('store.create') }}">Create new store</a>
+                    </div>
+                </div>
+            </li>
+
             <!-- Divider -->
             <hr class="sidebar-divider">
 

@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
@@ -33,4 +32,40 @@ class Store extends Model
      */
     protected $hidden = [
     ];
+
+    public function getStatusAttribute($value)
+    {
+        if ( $value == 0 )
+            return 'Deactivated';
+        return 'Active';
+    }
+
+    public static function getAllStores()
+    {
+    	return Store::join('products', 'stores.product_id', '=', 'products.id')->
+    	              join('point_of_sales', 'stores.point_sale_id', '=', 'point_of_sales.id')->
+    	              select('products.name as product_name',
+    	                     'point_of_sales.name as point_of_sales_name',
+    	                     'point_of_sales.status',
+    	                     'stores.quantity_store',
+    	                     'stores.quantity_sold',
+    	                     'stores.point_sale_id',
+    	                     'stores.product_id'
+    	              )->get();
+    }
+
+    public static function getStoreByIds($product_id,$point_sale_id)
+    {
+    	return Store::where([['stores.product_id','=',$product_id],['stores.point_sale_id','=',$point_sale_id]])->
+    	            join('products', 'stores.product_id', '=', 'products.id')->
+    	            join('point_of_sales', 'stores.point_sale_id', '=', 'point_of_sales.id')->
+    	            select('products.name as product_name',
+    	                   'point_of_sales.name as point_of_sales_name',
+    	                   'point_of_sales.status',
+    	                   'stores.quantity_store',
+    	                   'stores.quantity_sold',
+    	                   'stores.point_sale_id',
+    	                   'stores.product_id'
+    	            )->get();
+    }
 }
