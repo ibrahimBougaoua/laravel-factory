@@ -30,7 +30,7 @@ class StoreController extends Controller
     	try {
     		if (Auth::check()) {
 
-                $pointOfSale = PointOfSale::find($request->pointofsale_id);
+                $pointOfSale = PointOfSale::find($request->point_sale_id);
                 if( ! $pointOfSale )
                     return redirect()->route('store.index')->with(['error' => "this point of sale does't exists"]);
 
@@ -71,14 +71,12 @@ class StoreController extends Controller
     public function edit($point_sale_id,$product_id)
     {
     	try {
-    		$store = Store::where([
-    			['point_sale_id', '=', $point_sale_id],
-    			['product_id', '=', $product_id]
-    		]);
+    		$store = Store::where([['point_sale_id','=',$point_sale_id],['product_id','=',$product_id]])->get();
     		
             if( ! $store )
     			return redirect()->route('store.index')->with(['error' => "This store does not exist"]);
 
+    		$store = $store[0];
 	        $pointsOfSales = PointOfSale::all();
 	        $products = Product::all();
 
@@ -88,19 +86,16 @@ class StoreController extends Controller
         }
     }
 
-    public function update($point_sale_id,$product_id,PointOfSaleRequest $request)
+    public function update($point_sale_id,$product_id,StoreRequest $request)
     {
     	try {
-    		$store = Store::where([
-    			['point_sale_id', '=', $point_sale_id],
-    			['product_id', '=', $product_id]
-    		]);
+    		$store = Store::where([['point_sale_id','=',$point_sale_id],['product_id','=',$product_id]])->get();
     		
             if( ! $store )
     			return redirect()->route('store.index')->with(['error' => "This store does not exist"]);
-
+    		
             $store->update(
-                $store->except(['_token'])
+                $request->except(['_token'])
             );
 
             return redirect()->route('store.index')->with(['success' => "Store updated successfully"]);

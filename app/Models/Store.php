@@ -33,6 +33,8 @@ class Store extends Model
     protected $hidden = [
     ];
 
+    public $timestamps = false;
+
     public function getStatusAttribute($value)
     {
         if ( $value == 0 )
