@@ -68,6 +68,6 @@ class Store extends Model
     	                   'stores.quantity_sold',
     	                   'stores.point_sale_id',
     	                   'stores.product_id'
-    	            )->get();
+    	            )->first();
     }
 }
