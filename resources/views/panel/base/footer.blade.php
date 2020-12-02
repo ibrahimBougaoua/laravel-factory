@@ -48,7 +48,10 @@
 
     <!-- Core plugin JavaScript-->
     <script src="{{asset('admin/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
-
+    
+    <!-- Core plugin pusher-->
+    <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+    
     <!-- Custom scripts for all pages-->
     <script src="{{asset('admin/vendor/js/sb-admin-2.min.js')}}"></script>
 
@@ -58,6 +61,21 @@
     <!-- Page level custom scripts -->
     <script src="{{asset('admin/js/demo/chart-area-demo.js')}}"></script>
     <script src="{{asset('admin/js/demo/chart-pie-demo.js')}}"></script>
+  
+  <script>
+
+    // Enable pusher logging - don't include this in production
+    Pusher.logToConsole = true;
+
+    var pusher = new Pusher('15667d51363f17190fdc', {
+      cluster: 'eu'
+    });
+
+    var channel = pusher.subscribe('my-channel');
+    channel.bind('my-event', function(data) {
+      alert(JSON.stringify(data));
+    });
+  </script>
 
 </body>
 

@@ -50,13 +50,6 @@
                                         <span class="text-danger"><small>{{$message}}</small></span>
                                         @enderror
                                       <div class="form-group col-md-6">
-                                        <label for="exampleInputPassword1">Repeat Password</label>
-                                        <input type="password" name="repassword" class="form-control" id="exampleInputPassword1" placeholder="Repeat Password">
-                                        @error('repassword')
-                                        <span class="text-danger"><small>{{$message}}</small></span>
-                                        @enderror
-                                      </div>
-                                      <div class="form-group col-md-6">
                                         <label for="exampleFormControlSelect1">Gender</label>
                                         <select class="form-control" name="gender" id="exampleFormControlSelect1">
                                           <option value="man">Man</option>
@@ -98,7 +91,9 @@
                                           <label class="custom-file-label" for="customFile">Choose file</label>
                                         </div>
                                       </div>
-                                      <button type="submit" class="btn btn-primary">Create new employee</button>
+                                      <div class="form-group col-md-12">
+                                        <button type="submit" class="btn btn-primary">Create new employee</button>
+                                      </div>
                                     </form>
                                 </div>
                             </div>

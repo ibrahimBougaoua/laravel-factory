@@ -48,9 +48,14 @@ class Admin extends Authenticatable
         return $this->hasMany('App\Models\Admin','manage_id','id');
     }
 
+    public function getPointOfSales()
+    {
+        return $this->hasMany('App\Models\SalesMan','employee_id','id');
+    }
+
     public function scopeExceptSelf($query)
     {
-        return $query->where([['id','!=',Auth::id()],['manage_id','=',Auth::id()]]);
+        return $query->where('manage_id',Auth::id());
     }
 
     public function setPasswordAttribute($password)

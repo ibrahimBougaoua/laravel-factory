@@ -56,7 +56,8 @@ class EmployeeController extends Controller
     public function show($id)
     {
     	try {
-    		$employee = Admin::with('getMyEmployees')->find($id);
+    		$employee = Admin::with('getPointOfSales')->find($id);
+
     		if ( ! $employee )
     			return redirect()->route('employee.index')->with(['error' => "this employee does't exists"]);
 
@@ -76,7 +77,7 @@ class EmployeeController extends Controller
             if ( ! $employee )
                 return redirect()->route('employee.index')->with(['error' => "this employee does't exists"]);
 
-            if($employee->manage_id != Auth::id())
+            if($employee->manage_id != Auth::id() && $id != Auth::id())
                 return redirect()->route('employee.index')->with(['error' => "this employee does't exists"]);
             
             return view('panel.employee.edit',compact('employee'));
@@ -132,6 +133,11 @@ class EmployeeController extends Controller
                 return redirect()->route('employee.index')->with(['error' => "you can't delete you'r account"]);
             
             if($employee->manage_id != Auth::id())
+                return redirect()->route('employee.index')->with(['error' => "you can't delete this account"]);
+
+            $salesmen = $employee->getPointOfSales();
+
+            if( isset($salesmen) && $salesmen->count() > 0 )
                 return redirect()->route('employee.index')->with(['error' => "you can't delete this account"]);
 
             $employee->delete();

@@ -51,13 +51,6 @@
                                         <span class="text-danger"><small>{{$message}}</small></span>
                                         @enderror
                                       <div class="form-group col-md-6">
-                                        <label for="exampleInputPassword1">Repeat Password</label>
-                                        <input type="password" name="repassword" class="form-control" id="exampleInputPassword1" placeholder="Repeat Password">
-                                        @error('repassword')
-                                        <span class="text-danger"><small>{{$message}}</small></span>
-                                        @enderror
-                                      </div>
-                                      <div class="form-group col-md-6">
                                         <label for="exampleFormControlSelect1">Gender</label>
                                         <select class="form-control" name="gender" id="exampleFormControlSelect1">
                                           @foreach(genders() as $gender)
