@@ -9,12 +9,11 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
   <!-- Bootstrap core CSS -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="{{asset('ui/css/bootstrap.min.css')}}" rel="stylesheet">
   <!-- Material Design Bootstrap -->
-  <link href="css/mdb.min.css" rel="stylesheet">
+  <link href="{{asset('ui/css/mdb.min.css')}}" rel="stylesheet">
   <!-- Your custom styles (optional) -->
-  <link href="css/style.min.css" rel="stylesheet">
-    <link href="{{asset('admin/css/sb-admin-2.min.css')}}" rel="stylesheet">
+  <link href="{{asset('ui/css/style.min.css')}}" rel="stylesheet">
   
   <style type="text/css">
     html,
