@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Cart;
 use App\Http\Requests\ProductRequest;
 
 class ProductController extends Controller
@@ -104,5 +105,27 @@ class ProductController extends Controller
     	} catch (Exception $e) {
     		return redirect()->route('product.index')->with(['error' => "you can't delete this product"]);
     	}
+    }
+
+    public function addToCart(Product $product)
+    {
+        if( session()->has('cart') ) {
+            $cart = new Cart(session()->get('cart'));
+        } else {
+            $cart = new Cart();
+        }
+        $cart->add($product);
+        session()->put('cart',$cart);
+        return redirect()->route('product.index')->with(['success' => 'product delete successfully']);
+    }
+
+    public function dispalyCart()
+    {
+        if( session()->has('cart') ) {
+            $cart = new Cart(session()->get('cart'));
+        } else {
+            $cart = null;
+        }
+        return view('ui.checkout',compact('cart'));
     }
 }

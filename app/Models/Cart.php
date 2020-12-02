@@ -2,23 +2,21 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-
-class Cart extends Model
+class Cart
 {
 	public $items = [];
-	public $totalItems;
+	public $totalQty;
 	public $totalPrice;
 
 	public function __construct( $cart = null )
 	{
-	    $this->items = $cart->items;
-        $this->totalItems = $cart->totalItems;
-        $this->totalPrice = $cart->totalPrice;
+	    $this->items = [];
+        $this->totalQty = 0;
+        $this->totalPrice = 0;
 		
 		if ($cart) {
 			$this->items = $cart->items;
-            $this->totalItems = $cart->totalItems;
+            $this->totalQty = $cart->totalQty;
             $this->totalPrice = $cart->totalPrice;
 		}
 	}
@@ -26,13 +24,13 @@ class Cart extends Model
 	public function add($product)
 	{
 		$item = [
-			'title' => $product->title,
-			'price' => $product->price,
+			'name' => $product->title,
+			'unit_price' => $product->price,
 			'qty' => 0,
 			'image' => $product->image
 		];
 
-		if( ! array_key_exists($product->id, $this->item) )
+		if( ! array_key_exists($product->id, $this->items) )
 		{
 			$this->items[$product->id] = $item;
 			$this->totalQty += 1;
@@ -41,7 +39,7 @@ class Cart extends Model
 			$this->totalQty += 1;
 			$this->totalPrice += $product->price;
 		}
-		$this->items[$product->id]['qtn'] += 1;
+		$this->items[$product->id]['qty'] += 1;
 	}
 
 }

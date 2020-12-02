@@ -81,6 +81,7 @@ Route::group(['prefix' => 'panel','middleware' => 'auth:admin'],function(){
                     Route::post('/store','App\Http\Controllers\Panel\ProductController@store')->name('product.store');
                     Route::get('/show/{id}','App\Http\Controllers\Panel\ProductController@show')->name('product.show');
                     Route::get('/delete/{id}','App\Http\Controllers\Panel\ProductController@destroy')->name('product.delete');
+                    Route::get('/addToCart/{product}','App\Http\Controllers\Panel\ProductController@addToCart')->name('product.addToCart');
        });
 
        /* stores routing */

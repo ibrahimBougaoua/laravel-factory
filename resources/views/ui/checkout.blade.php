@@ -6,6 +6,11 @@
   <main class="mt-5 pt-4">
     <div class="container wow fadeIn">
 
+@if($cart)
+@else
+<h1>No Items</h1>
+@endif
+
       <!-- Heading -->
       <h2 class="my-5 h2 text-center">Checkout form</h2>
 

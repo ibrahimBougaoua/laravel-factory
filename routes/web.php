@@ -16,3 +16,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('ui.home');
 });
+
+Route::get('/dispalyCart','App\Http\Controllers\Panel\ProductController@dispalyCart')->name('product.dispalyCart');
