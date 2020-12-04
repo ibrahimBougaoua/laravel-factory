@@ -19,4 +19,4 @@ Route::get('/', function () {
 
 Route::get('/dispalyCart','App\Http\Controllers\Panel\ProductController@dispalyCart')->name('product.dispalyCart');
 Route::get('/checkout/{amount}','App\Http\Controllers\Panel\ProductController@checkOut')->name('product.checkout');
-Route::post('/charge/{amount}','App\Http\Controllers\Panel\ProductController@charge')->name('product.charge');
+Route::post('/charge/','App\Http\Controllers\Panel\ProductController@charge')->name('product.charge');
