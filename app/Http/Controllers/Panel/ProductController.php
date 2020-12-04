@@ -114,6 +114,7 @@ class ProductController extends Controller
         } else {
             $cart = new Cart();
         }
+        //dd($product);
         $cart->add($product);
         session()->put('cart',$cart);
         return redirect()->route('product.index')->with(['success' => 'product delete successfully']);
@@ -126,6 +127,17 @@ class ProductController extends Controller
         } else {
             $cart = null;
         }
-        return view('ui.checkout',compact('cart'));
+        //dd($cart);
+        return view('ui.cart.show',compact('cart'));
+    }
+
+    public function checkOut($amount)
+    {
+        return view('ui.cart.checkout',compact('amount'));
+    }
+
+    public function charge(Request $request)
+    {
+        dd($request->stripeToken);
     }
 }

@@ -24,20 +24,20 @@ class Cart
 	public function add($product)
 	{
 		$item = [
-			'name' => $product->title,
-			'unit_price' => $product->price,
+			'name' => $product->name,
+			'unit_price' => $product->unit_price,
+			'description' => $product->description,
 			'qty' => 0,
-			'image' => $product->image
 		];
 
 		if( ! array_key_exists($product->id, $this->items) )
 		{
 			$this->items[$product->id] = $item;
 			$this->totalQty += 1;
-			$this->totalPrice += $product->price;
+			$this->totalPrice += $product->unit_price;
 		} else {
 			$this->totalQty += 1;
-			$this->totalPrice += $product->price;
+			$this->totalPrice += $product->unit_price;
 		}
 		$this->items[$product->id]['qty'] += 1;
 	}
