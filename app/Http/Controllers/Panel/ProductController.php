@@ -152,7 +152,8 @@ class ProductController extends Controller
         $id = $charge['id'];
         session()->forget('cart');
         if ($id) {
-            $this->admin()->orders()->create([
+            $admin = new Admin();
+            $admin->orders()->create([
                 'cart' => serialize(session()->get('cart'))
             ]);
             return redirect()->route('product')->with(['success' => 'payment successfully !']);
