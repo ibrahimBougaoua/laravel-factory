@@ -20,6 +20,7 @@
           <div class="card">
             <form action="{{ route('product.charge') }}" method="post" id="payment-form">
               @csrf
+              <input type="hidden" name="_key" value="{{ $amount }}" />
               <div class="">
                 <label for="card-element">
                   Credit or debit card
