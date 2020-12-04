@@ -14,9 +14,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['prefix' => '/','middleware' => 'auth:customer'],function(){
+	  Route::get('/dashbaord','App\Http\Controllers\Ui\DashboardController@index')->name('ui.dashbaord');
       Route::group(['prefix' => 'cart'],function(){
              Route::get('/','App\Http\Controllers\Ui\ProductController@dispalyCart')->name('product.dispalyCart');
              Route::get('/checkout/{amount}','App\Http\Controllers\Ui\ProductController@checkOut')->name('product.checkout');
              Route::post('/charge/','App\Http\Controllers\Ui\ProductController@charge')->name('product.charge');
       });
+});
+
+Route::group(['prefix' => '/','middleware' => 'guest:customer'], function () {
+       Route::get('/login','App\Http\Controllers\Ui\LoginController@getLogin')->name('ui.get.login');
+       Route::post('/login','App\Http\Controllers\Ui\LoginController@checkLogin')->name('ui.login');
 });

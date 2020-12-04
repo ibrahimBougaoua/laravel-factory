@@ -81,8 +81,7 @@
               target="_blank">Free download</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link waves-effect" href="https://mdbootstrap.com/education/bootstrap/" target="_blank">Free
-              tutorials</a>
+            <a class="nav-link waves-effect" href="{{ route('ui.get.login') }}">Login</a>
           </li>
         </ul>
 

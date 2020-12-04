@@ -14,8 +14,8 @@ class LoginController extends Controller
     public function checkLogin(LoginRequest $request)
     {
         $remembre_me = $request->has('remembre_me') ? true : false;
-    	if (auth()->guard('admin')->attempt(['email' => $request->input("email"),'password' => $request->input("password")],$remembre_me)) {
-    		return redirect()->route('panel.dashboard');
+    	if (auth()->guard('customer')->attempt(['email' => $request->input("email"),'password' => $request->input("password")],$remembre_me)) {
+    		return redirect()->route('ui.dashbaord');
     	}
     	return redirect()->back()->with(['error' => 'error login']);
     }
