@@ -9,6 +9,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Cart;
 use App\Http\Requests\ProductRequest;
+use Stripe;
 
 class ProductController extends Controller
 {
@@ -138,6 +139,38 @@ class ProductController extends Controller
 
     public function charge(Request $request)
     {
+
+        Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        $charge = Stripe\Charge::create ([
+                "amount" => $request->amount * 100,
+                "currency" => "USD",
+                "source" => $request->stripeToken,
+                "description" => "Test payment from cc" 
+        ]);
+
+        $id = $charge['id'];
+        session()->forget('cart');
+        if ($id) {
+            return redirect()->route('product')->with(['success' => 'payment successfully !']);
+        } else {
+            return redirect()->back();
+        }
+        /*
+        $charge = Stripe\Charge::create({
+            'currency' => 'USD',
+            'source' => $request->stripeToken,
+            'amount' => $request->amount,
+            'description' => 'test stripe from laravel'
+        });
+
+        $id = $charge['id'];
+        session()->forget('cart');
+        if ($id) {
+            return redirect()->route('product.dispalyCart')->with(['success' => 'payment successfully !']);
+        } else {
+            return redirect()->back();
+        }
+        */
         dd($request->stripeToken);
     }
 }

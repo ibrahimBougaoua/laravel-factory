@@ -18,7 +18,7 @@
 
           <!--Card-->
           <div class="card">
-            <form action="{{ route('product.charge') }}" method="post" id="payment-form">
+            <form action="{{ route('product.charge',$amount) }}" method="post" id="payment-form">
               @csrf
               <input type="hidden" name="_key" value="{{ $amount }}" />
               <div class="">
