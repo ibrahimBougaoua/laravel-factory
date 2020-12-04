@@ -77,4 +77,9 @@ class Admin extends Authenticatable
         return 'deactivated';
     }
 
+    public function orders()
+    {
+        return $this->hasMany('App\Models\Order');
+    }
+
 }

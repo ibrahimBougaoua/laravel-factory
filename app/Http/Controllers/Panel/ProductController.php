@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Cart;
+use App\Models\Admin;
 use App\Http\Requests\ProductRequest;
 use Stripe;
 
@@ -151,6 +152,9 @@ class ProductController extends Controller
         $id = $charge['id'];
         session()->forget('cart');
         if ($id) {
+            $this->admin()->orders()->create([
+                'cart' => serialize(session()->get('cart'))
+            ]);
             return redirect()->route('product')->with(['success' => 'payment successfully !']);
         } else {
             return redirect()->back();
