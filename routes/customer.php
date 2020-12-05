@@ -24,6 +24,8 @@ Route::group(['prefix' => '/','middleware' => 'auth:customer'],function(){
              Route::get('/product/{id}','App\Http\Controllers\Ui\ProductController@destroy')->name('product.remove');
              Route::post('/update/{id}','App\Http\Controllers\Ui\ProductController@update')->name('product.change');
       });
+
+      Route::get('/logout','App\Http\Controllers\Ui\LoginController@logOut')->name('ui.logout');
 });
 
 Route::group(['prefix' => '/','middleware' => 'guest:customer'], function () {

@@ -257,7 +257,11 @@
       <!--Section: Products v.3-->
 
       <!--Pagination-->
-      {{ $products->links() }}
+      <div class="d-flex">
+          <div class="mx-auto">
+              {{$products->links("pagination::bootstrap-4")}}
+          </div>
+      </div>
       <!--Pagination-->
 
     </div>
