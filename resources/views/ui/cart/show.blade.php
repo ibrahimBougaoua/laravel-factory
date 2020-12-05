@@ -27,18 +27,16 @@
         
         @if($cart)
         <!--Grid column-->
-        <div class="col-md-4 mb-4">
+        <div class="col-md-12 mb-4">
 
           <!-- Heading -->
           <h4 class="d-flex justify-content-between align-items-center mb-3">
             <span class="text-muted">Your cart</span>
             <span class="badge badge-secondary badge-pill">{{ $cart->totalQty }}</span>
           </h4>
-
           
           <!-- Cart -->
           <ul class="list-group mb-3 z-depth-1">
-
 
             @foreach($cart->items as $product)
             <li class="list-group-item d-flex justify-content-between lh-condensed">
@@ -47,6 +45,20 @@
                 <small class="text-muted">{{ $product['description'] }}</small>
               </div>
               <span class="text-muted">${{ $product['unit_price'] }}</span>
+              <a href="{{ route('product.remove',$product['id']) }}" class="btn btn-secondary btn-md waves-effect m-0">Delete</a>
+            </li>
+            <li class="list-group-item d-flex justify-content-between lh-condensed">
+              <!-- update -->
+              <form class="card p-2" method="POST" action="{{ route('product.change',$product['id']) }}">
+                
+                <div class="input-group">
+                  <input type="text" class="form-control" name="" aria-label="Recipient's username" aria-describedby="basic-addon2" value="{{ $product['qty'] }}">
+                  <div class="input-group-append">
+                    <button class="btn btn-secondary btn-md waves-effect m-0" type="submit">Change</button>
+                  </div>
+                </div>
+              </form>
+              <!-- update -->
             </li>
             @endforeach
             <li class="list-group-item d-flex justify-content-between">

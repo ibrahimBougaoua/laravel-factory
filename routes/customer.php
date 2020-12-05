@@ -14,13 +14,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['prefix' => '/','middleware' => 'auth:customer'],function(){
-	  Route::get('/dashbaord','App\Http\Controllers\Ui\DashboardController@index')->name('ui.dashbaord');
-	  Route::get('/orders','App\Http\Controllers\Ui\OrderController@index')->name('ui.orders');
+	 Route::get('/dashbaord','App\Http\Controllers\Ui\DashboardController@index')->name('ui.dashbaord');
+	 Route::get('/orders','App\Http\Controllers\Ui\OrderController@index')->name('ui.orders');
       Route::group(['prefix' => 'cart'],function(){
-      	     Route::get('/addToCart/{product}','App\Http\Controllers\Ui\PaymentController@addToCart')->name('product.addToCart');
+      	 Route::get('/addToCart/{product}','App\Http\Controllers\Ui\PaymentController@addToCart')->name('product.addToCart');
              Route::get('/','App\Http\Controllers\Ui\PaymentController@dispalyCart')->name('product.viewCart');
              Route::get('/checkout/{amount}','App\Http\Controllers\Ui\PaymentController@checkOut')->name('product.checkout');
              Route::post('/charge/','App\Http\Controllers\Ui\PaymentController@charge')->name('product.charge');
+             Route::get('/product/{id}','App\Http\Controllers\Ui\ProductController@destroy')->name('product.remove');
+             Route::post('/update/{id}','App\Http\Controllers\Ui\ProductController@update')->name('product.change');
       });
 });
 
