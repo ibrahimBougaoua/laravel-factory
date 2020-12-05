@@ -237,8 +237,9 @@
 
                 <h4 class="font-weight-bold blue-text">
                   <strong>{{$product->unit_price}}$</strong>
-                  <a href="{{route('product.addToCart',$product->id)}}">add To Cart</a>
                 </h4>
+
+                <a href="{{ route('ui.product.show',$product->id) }}" class="dark-grey-text">Show more</a>
 
               </div>
               <!--Card content-->

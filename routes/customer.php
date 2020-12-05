@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => '/','middleware' => 'auth:customer'],function(){
 	 Route::get('/dashbaord','App\Http\Controllers\Ui\DashboardController@index')->name('ui.dashbaord');
-	 Route::get('/orders','App\Http\Controllers\Ui\OrderController@index')->name('ui.orders');
+       Route::get('/orders','App\Http\Controllers\Ui\OrderController@index')->name('ui.orders');
+	 Route::get('/product/{id}','App\Http\Controllers\Ui\ProductController@show')->name('ui.product.show');
       Route::group(['prefix' => 'cart'],function(){
       	 Route::get('/addToCart/{product}','App\Http\Controllers\Ui\PaymentController@addToCart')->name('product.addToCart');
              Route::get('/','App\Http\Controllers\Ui\PaymentController@dispalyCart')->name('product.viewCart');

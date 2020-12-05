@@ -17,6 +17,18 @@ class ProductController extends Controller
     	return view('ui.home',compact('products'));
 	}
 
+	public function show($id)
+	{
+		try {
+			$product = Product::find($id);
+			if ( ! $product )
+				return redirect()->route('ui.product')->with(['error' => "this Product does't exists !"]);
+			return view('ui.product.show',compact('product'));
+		} catch (Exception $e) {
+			return redirect()->route('ui.product')->with(['error' => "Somme error !"]);
+		}
+	}
+
 	public function destroy($id)
 	{
 		$cart = new Cart(session()->get('cart'));

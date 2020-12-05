@@ -69,7 +69,7 @@
         <!-- Left -->
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link waves-effect" href="#">Home
+            <a class="nav-link waves-effect" href="/">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
