@@ -88,8 +88,8 @@
         <!-- Right -->
         <ul class="navbar-nav nav-flex-icons">
           <li class="nav-item">
-            <a class="nav-link waves-effect">
-              <span class="badge red z-depth-1 mr-1"> 1 </span>
+            <a class="nav-link waves-effect" href="{{route('product.viewCart')}}">
+              <span class="badge red z-depth-1 mr-1"> {{ session()->has('cart') ? session()->get('cart')->totalQty : '0' }} </span>
               <i class="fas fa-shopping-cart"></i>
               <span class="clearfix d-none d-sm-inline-block"> Cart </span>
             </a>

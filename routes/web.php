@@ -13,6 +13,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('ui.home');
-});
+Route::get('/','App\Http\Controllers\Ui\ProductController@index')->name('ui.product');

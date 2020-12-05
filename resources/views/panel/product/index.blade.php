@@ -25,8 +25,6 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>View</th>
-                                            <th>addToCart</th>
                                             <th>Name</th>
                                             <th>Description</th>
                                             <th>color</th>
@@ -40,8 +38,6 @@
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>View</th>
-                                            <th>addToCart</th>
                                             <th>Name</th>
                                             <th>Description</th>
                                             <th>color</th>
@@ -56,8 +52,6 @@
                                     <tbody>
                                         @foreach($products as $product)
                                         <tr>
-                                            <td><a href="{{route('product.dispalyCart')}}">View</a></td>
-                                            <td><a href="{{route('product.addToCart',$product->id)}}">add To Cart</a></td>
                                             <td>{{$product->name}}</td>
                                             <td>{{$product->description}}</td>
                                             <td>{{$product->color}}</td>

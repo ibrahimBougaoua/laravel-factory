@@ -79,7 +79,7 @@ class Admin extends Authenticatable
 
     public function orders()
     {
-        return $this->hasMany('App\Models\Order');
+        return $this->hasMany('App\Models\Order','id','id');
     }
 
 }

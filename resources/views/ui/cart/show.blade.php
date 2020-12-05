@@ -24,7 +24,8 @@
 
               <!--Grid row-->
               <div class="row">
-
+        
+        @if($cart)
         <!--Grid column-->
         <div class="col-md-4 mb-4">
 
@@ -34,7 +35,7 @@
             <span class="badge badge-secondary badge-pill">{{ $cart->totalQty }}</span>
           </h4>
 
-          @if($cart)
+          
           <!-- Cart -->
           <ul class="list-group mb-3 z-depth-1">
 
@@ -53,25 +54,20 @@
               <strong>${{ $cart->totalPrice }}</strong>
             </li>
           </ul>
-          @else
-            <h1>There are No Items in the cart.</h1>
-          @endif
           <!-- Cart -->
 
           <!-- Promo code -->
           <form class="card p-2">
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Promo code" aria-label="Recipient's username" aria-describedby="basic-addon2">
-              <div class="input-group-append">
-                <button class="btn btn-secondary btn-md waves-effect m-0" type="button">Redeem</button>
-              </div>
-            </div>
             <a href="{{ route('product.checkout',$cart->totalPrice) }}" class="btn btn-secondary btn-md waves-effect m-0">checkout</a>
           </form>
           <!-- Promo code -->
 
         </div>
         <!--Grid column-->
+
+          @else
+            <h1>There are No Items in the cart.</h1>
+        @endif
 
       </div>
       <!--Grid row-->
