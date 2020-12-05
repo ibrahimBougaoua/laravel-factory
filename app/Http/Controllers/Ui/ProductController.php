@@ -67,7 +67,7 @@ class ProductController extends Controller
             ]);
             return redirect()->route('ui.product')->with(['success' => 'payment successfully !']);
         } else {
-            return redirect()->back();
+            return redirect()->route('ui.product')->with(['error' => 'payment error !']);
         }
         /*
         $charge = Stripe\Charge::create({

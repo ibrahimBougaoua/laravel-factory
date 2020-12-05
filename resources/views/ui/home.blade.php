@@ -194,6 +194,9 @@
       </nav>
       <!--/.Navbar-->
 
+      @include('panel.alerts.success')
+      @include('panel.alerts.errors')
+
       <!--Section: Products v.3-->
       <section class="text-center mb-4">
 
