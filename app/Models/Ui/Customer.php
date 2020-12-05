@@ -66,4 +66,9 @@ class Customer extends Authenticatable
             return 'Active';
         return 'deactivated';
     }
+
+    public function orders()
+    {
+        return $this->hasMany('App\Models\Order');
+    }
 }

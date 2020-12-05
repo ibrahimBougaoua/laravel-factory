@@ -53,12 +53,11 @@ class PaymentController extends Controller
         ]);
 
         $id = $charge['id'];
-        session()->forget('cart');
         if ($id) {
-            $admin = new Admin();
-            $admin->orders()->create([
+            Auth::guard('customer')->user()->orders()->create([
                 'cart' => serialize(session()->get('cart'))
             ]);
+            session()->forget('cart');
             return redirect()->route('ui.product')->with(['success' => 'payment successfully !']);
         } else {
             return redirect()->route('ui.product')->with(['error' => 'payment error !']);

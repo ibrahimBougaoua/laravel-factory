@@ -54,7 +54,7 @@
 
       <!-- Brand -->
       <a class="navbar-brand waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">
-        <strong class="blue-text">MDB</strong>
+        <strong class="blue-text">Factories</strong>
       </a>
 
       <!-- Collapse -->
@@ -72,16 +72,6 @@
             <a class="nav-link waves-effect" href="#">Home
               <span class="sr-only">(current)</span>
             </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">About MDB</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link waves-effect" href="https://mdbootstrap.com/docs/jquery/getting-started/download/"
-              target="_blank">Free download</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link waves-effect" href="{{ route('ui.get.login') }}">Login</a>
           </li>
         </ul>
 
@@ -110,6 +100,21 @@
               <i class="fab fa-github mr-2"></i>MDB GitHub
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{ route('ui.orders') }}" class="nav-link border border-light rounded waves-effect">
+              <i class="fab fa-order mr-2"></i>Orders
+            </a>
+          </li>
+
+          @if(!auth()->check())
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="{{ route('ui.get.login') }}">Login</a>
+          </li>
+          @else
+          <li class="nav-item">
+            <a class="nav-link waves-effect" href="{{ route('ui.get.login') }}">Logout</a>
+          </li>
+          @endif
         </ul>
 
       </div>
