@@ -107,7 +107,7 @@
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::guard('customer')->user()->name }}</span>
-                  <img class="rounded-circle" src="{{ Auth::guard('customer')->user()->photo }}" style="width: 35px;height: 35px">
+                  <img class="rounded-circle" src="{{ Auth::guard('customer')->user()->photo }}" style="width: 25px;height: 25px">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"

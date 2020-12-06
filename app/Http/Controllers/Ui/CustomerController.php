@@ -43,4 +43,22 @@ class CustomerController extends Controller
         }
     }
 
+    public function changePhoto(Request $request)
+    {
+    	try {
+           $customer = Customer::find(Auth::guard('customer')->user()->id);
+           
+            if($request->has('photo'))
+            {
+                $photo_path = upload_image('customer/',$request->photo);
+                Customer::where('id',Auth::id())->update(['photo' => $photo_path]);
+            }
+
+            return redirect()->route('ui.profile')->with(['success' => "Profile updated successfully"]);
+
+        } catch (Exception $e) {
+            return redirect()->route('ui.profile')->with(['error' => "some error"]);
+        }
+    }
+
 }

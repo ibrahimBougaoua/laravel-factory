@@ -57,21 +57,27 @@ return [
 
         'profile' => [
             'driver' => 'local',
-            'root' => base_path() . '/public/assets/images/profile',
+            'root' => public_path() . '/assets/images/profile',
             'url' => env('APP_URL').'/public',
             'visibility' => 'public',
         ],
 
         'category' => [
             'driver' => 'local',
-            'root' => base_path() . '/public/assets/images/category',
+            'root' => public_path() . '/assets/images/category',
             'url' => env('APP_URL').'/public',
             'visibility' => 'public',
         ],
 
         'factory' => [
             'driver' => 'local',
-            'root' => base_path() . '/public/assets/images/factory',
+            'root' => public_path() . '/assets/images/factory',
+            'url' => env('APP_URL').'/public',
+            'visibility' => 'public',
+        ],
+        'customer' => [
+            'driver' => 'local',
+            'root' => public_path() . '/assets/images/customer',
             'url' => env('APP_URL').'/public',
             'visibility' => 'public',
         ],

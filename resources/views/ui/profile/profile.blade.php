@@ -9,7 +9,7 @@
 
       @include('panel.alerts.success')
       @include('panel.alerts.errors')
-      
+
         <div class="col-lg-8 order-lg-2">
                         <form action="{{ route('ui.customer.update') }}" method="POST" enctype="multipart/form-data">
                         @csrf
@@ -118,12 +118,18 @@
                     </form>
         </div>
         <div class="col-lg-4 order-lg-1 text-center">
-            <img src="//placehold.it/150" class="mx-auto img-fluid img-circle d-block" alt="avatar">
+          <form action="{{ route('ui.customer.changePhoto') }}" method="POST" enctype="multipart/form-data">
+          @csrf
+            <img src="{{ $customer->photo }}" class="mx-auto img-fluid img-circle d-block" alt="avatar">
             <h6 class="mt-2">Upload a different photo</h6>
             <label class="custom-file">
-                <input type="file" id="file" class="custom-file-input">
-                <span class="custom-file-control">Choose file</span>
+                <div class="custom-file">
+                  <input type="file" name="photo" class="custom-file-input" id="customFile">
+                  <label class="custom-file-label" for="customFile">Choose file</label>
+                </div>
+                <input type="submit" class="btn btn-primary float-right mr-0" value="Save Change">
             </label>
+           </form>
         </div>
     </div>
 </div>
