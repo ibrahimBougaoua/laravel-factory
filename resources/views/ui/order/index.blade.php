@@ -2,8 +2,10 @@
 
 @section('content')
 
-<div class="container">
-    <div class="row">
+  <!--Main layout-->
+  <main class="mt-5 pt-4">
+    <div class="container dark-grey-text mt-5">
+    <div class="row my-2">
         <div class="col-md-9">
             @foreach($carts as $cart)
             <div class="card mb-3">
@@ -39,5 +41,7 @@
         </div>
     </div>
 </div>
+  </main>
+  <!--Main layout-->
 
 @endsection('content')

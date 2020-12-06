@@ -13,7 +13,7 @@ class CustomerRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,6 +22,13 @@ class CustomerRequest extends FormRequest
      * @return array
      */
     public function rules()
+    {
+        return [
+            'password' => 'required_without:id',
+        ];
+    }
+
+    public function messages()
     {
         return [
             //
