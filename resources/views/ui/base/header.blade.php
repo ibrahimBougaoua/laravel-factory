@@ -20,7 +20,7 @@
     body,
     header,
     .carousel {
-      height: 60vh;
+      height: 100vh;
     }
 
     @media (max-width: 740px) {
@@ -77,6 +77,7 @@
 
         <!-- Right -->
         <ul class="navbar-nav nav-flex-icons">
+          @if(Auth::guard('customer')->check())
           <li class="nav-item">
             <a class="nav-link waves-effect" href="{{route('product.viewCart')}}">
               <span class="badge red z-depth-1 mr-1"> {{ session()->has('cart') ? session()->get('cart')->totalQty : '0' }} </span>
@@ -84,6 +85,7 @@
               <span class="clearfix d-none d-sm-inline-block"> Cart </span>
             </a>
           </li>
+          @endif
           <li class="nav-item">
             <a href="https://www.facebook.com/mdbootstrap" class="nav-link waves-effect" target="_blank">
               <i class="fab fa-facebook-f"></i>
@@ -94,13 +96,12 @@
               <i class="fab fa-twitter"></i>
             </a>
           </li>
+          @if(Auth::guard('customer')->check())
           <li class="nav-item">
             <a href="{{ route('ui.orders') }}" class="nav-link border border-light rounded waves-effect">
               <i class="fab fa-first-order mr-2"></i>Orders
             </a>
           </li>
-
-          @if(Auth::guard('customer')->check())
           <!-- Nav Item - User Information -->
           <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"

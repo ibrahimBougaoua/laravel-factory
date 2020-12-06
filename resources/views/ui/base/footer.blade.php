@@ -1,65 +1,57 @@
 
   <!--Footer-->
-  <footer class="page-footer text-center font-small mt-4 wow fadeIn">
-
-    <!--Call to action-->
-    <div class="pt-4">
-      <a class="btn btn-outline-white" href="https://mdbootstrap.com/docs/jquery/getting-started/download/" target="_blank"
-        role="button">Download MDB
-        <i class="fas fa-download ml-2"></i>
-      </a>
-      <a class="btn btn-outline-white" href="https://mdbootstrap.com/education/bootstrap/" target="_blank" role="button">Start
-        free tutorial
-        <i class="fas fa-graduation-cap ml-2"></i>
-      </a>
-    </div>
-    <!--/.Call to action-->
-
-    <hr class="my-4">
-
-    <!-- Social icons -->
-    <div class="pb-4">
-      <a href="https://www.facebook.com/mdbootstrap" target="_blank">
-        <i class="fab fa-facebook-f mr-3"></i>
-      </a>
-
-      <a href="https://twitter.com/MDBootstrap" target="_blank">
-        <i class="fab fa-twitter mr-3"></i>
-      </a>
-
-      <a href="https://www.youtube.com/watch?v=7MUISDJ5ZZ4" target="_blank">
-        <i class="fab fa-youtube mr-3"></i>
-      </a>
-
-      <a href="https://plus.google.com/u/0/b/107863090883699620484" target="_blank">
-        <i class="fab fa-google-plus-g mr-3"></i>
-      </a>
-
-      <a href="https://dribbble.com/mdbootstrap" target="_blank">
-        <i class="fab fa-dribbble mr-3"></i>
-      </a>
-
-      <a href="https://pinterest.com/mdbootstrap" target="_blank">
-        <i class="fab fa-pinterest mr-3"></i>
-      </a>
-
-      <a href="https://github.com/mdbootstrap/bootstrap-material-design" target="_blank">
-        <i class="fab fa-github mr-3"></i>
-      </a>
-
-      <a href="http://codepen.io/mdbootstrap/" target="_blank">
-        <i class="fab fa-codepen mr-3"></i>
-      </a>
-    </div>
-    <!-- Social icons -->
-
-    <!--Copyright-->
-    <div class="footer-copyright py-3">
-      © 2019 Copyright:
-      <a href="https://mdbootstrap.com/education/bootstrap/" target="_blank"> MDBootstrap.com </a>
-    </div>
-    <!--/.Copyright-->
-
+          <footer class="section-footer border-top">
+            <div class="container-fluid">
+                <section class="footer-top padding-y">
+                    <div class="row">
+                        <aside class="col-md-4">
+                            <article class="mr-3">
+                                <h1 class="display-4 text-primary">Factories Land</h1>
+                                <p class="mt-3 description">Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                <div> <a class="btn btn-icon btn-light" title="Facebook" target="_blank" href="#" data-abc="true"><i class="fab fa-facebook-f"></i></a> <a class="btn btn-icon btn-light" title="Instagram" target="_blank" href="#" data-abc="true"><i class="fab fa-instagram"></i></a> <a class="btn btn-icon btn-light" title="Youtube" target="_blank" href="#" data-abc="true"><i class="fab fa-youtube"></i></a> <a class="btn btn-icon btn-light" title="Twitter" target="_blank" href="#" data-abc="true"><i class="fab fa-twitter"></i></a> </div>
+                            </article>
+                        </aside>
+                        <aside class="col-sm-3 col-md-2">
+                            <h6 class="title">About</h6>
+                            <ul class="list-unstyled">
+                                <li> <a href="#" data-abc="true">About us</a></li>
+                                <li> <a href="#" data-abc="true">Services</a></li>
+                                <li> <a href="#" data-abc="true">Terms & Condition</a></li>
+                                <li> <a href="#" data-abc="true">Our Blogs</a></li>
+                            </ul>
+                        </aside>
+                        <aside class="col-sm-3 col-md-2">
+                            <h6 class="title">Services</h6>
+                            <ul class="list-unstyled">
+                                <li> <a href="#" data-abc="true">Help center</a></li>
+                                <li> <a href="#" data-abc="true">Money refund</a></li>
+                                <li> <a href="#" data-abc="true">Terms and Policy</a></li>
+                                <li> <a href="#" data-abc="true">Open dispute</a></li>
+                            </ul>
+                        </aside>
+                        <aside class="col-sm-3 col-md-2">
+                            <h6 class="title">For users</h6>
+                            <ul class="list-unstyled">
+                                <li> <a href="#" data-abc="true"> User Login </a></li>
+                                <li> <a href="#" data-abc="true"> User register </a></li>
+                                <li> <a href="#" data-abc="true"> Account Setting </a></li>
+                                <li> <a href="#" data-abc="true"> My Orders </a></li>
+                            </ul>
+                        </aside>
+                        <aside class="col-sm-2 col-md-2">
+                            <h6 class="title">Our app</h6> <a href="#" class="d-block mb-2" data-abc="true"><img class="img-responsive" src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1574317087/AAA/appstore.png" height="40"></a> <a href="#" class="d-block mb-2" data-abc="true"><img class="img-responsive" src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1574317110/AAA/playmarket.png" height="40"></a>
+                        </aside>
+                    </div>
+                </section>
+                <section class="footer-copyright border-top">
+                  <div class="row justify-content-center">
+                    <div class="col">
+                      <p class="text-canter text-muted"> © 2019 factories All rights resetved </p>
+                    </div>
+                  </div>
+                </section>
+            </div>
+        </footer>
   </footer>
   <!--/.Footer-->
 
