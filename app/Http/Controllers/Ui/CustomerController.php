@@ -10,6 +10,24 @@ use App\Models\Ui\Customer;
 
 class CustomerController extends Controller
 {
+    public function signup()
+    {
+        return view('ui.signup.signup');
+    }
+
+    public function store(Request $request)
+    {
+    	return $request;
+    	try {
+                $customer = Customer::create([$request->all()]);
+	    		
+                //Notification::send($employee,new EmployeeCreated($employee));
+	    		return redirect()->route('ui.dasgbaord')->with(['success' => 'welcome !']);
+    	} catch (Exception $e) {
+    		return redirect()->route('ui.signup')->with(['error' => 'You have an error !']);
+    	}
+    }
+
     public function profile()
     {
     	$customer = Customer::find(Auth::guard('customer')->user()->id);
@@ -61,4 +79,9 @@ class CustomerController extends Controller
         }
     }
 
+    public function logOut()
+    {
+        Auth::logout();
+        return view('ui.auth.login');
+    }
 }

@@ -14,7 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['prefix' => '/','middleware' => 'auth:customer'],function(){
-	 Route::get('/dashbaord','App\Http\Controllers\Ui\DashboardController@index')->name('ui.dashbaord');
+       Route::get('/dashbaord','App\Http\Controllers\Ui\DashboardController@index')->name('ui.dashbaord');
+       Route::get('/signup','App\Http\Controllers\Ui\CustomerController@signup')->name('ui.signup');
+	 Route::post('/create','App\Http\Controllers\Ui\CustomerController@store')->name('ui.customer.store');
        Route::get('/orders','App\Http\Controllers\Ui\OrderController@index')->name('ui.orders');
        Route::get('/product/{id}','App\Http\Controllers\Ui\ProductController@show')->name('ui.product.show');
        Route::get('/profile','App\Http\Controllers\Ui\CustomerController@profile')->name('ui.profile');
