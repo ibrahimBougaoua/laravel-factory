@@ -36,4 +36,7 @@ Route::group(['prefix' => '/','middleware' => 'guest:customer'], function () {
        Route::post('/login','App\Http\Controllers\Ui\LoginController@checkLogin')->name('ui.login');
        Route::get('/signup','App\Http\Controllers\Ui\CustomerController@signup')->name('ui.signup');
        Route::post('/create','App\Http\Controllers\Ui\CustomerController@store')->name('ui.customer.store');
+       Route::get('/forgot','App\Http\Controllers\Ui\CustomerController@forgot')->name('ui.customer.forgot');
+       Route::post('/forgot_password', 'App\Http\Controllers\Ui\CustomerController@forgotPassword')->name('ui.customer.forgotPassword');
+       Route::post('/reset_password_with_token', 'App\Http\Controllers\Ui\CustomerController@ui.resetPassword');
 });

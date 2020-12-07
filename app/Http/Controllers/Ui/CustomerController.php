@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Ui\CustomerRequest;
 use Illuminate\Http\Request;
 use App\Models\Ui\Customer;
+use Sentinel;
+use Reminder;
+use Mail;
 
 class CustomerController extends Controller
 {
@@ -84,4 +87,39 @@ class CustomerController extends Controller
         Auth::logout();
         return view('ui.auth.login');
     }
+
+    public function forgot()
+    {
+        return view('ui.auth.password.email');
+    }
+
+    public function forgotPassword(Request $request)
+    {
+    	try {
+    		$customer = Costomer::whereEmail($request->email)->first();
+    		if ( ! $customer )
+    			return redirect()->route('ui.customer.forgot')->with(['error' => "This email does't exists !"]);
+    		$customer = Sentinel::findById($customer->id);
+    		$reminder = Reminder::exists($customer) ? Reminder::create($customer);
+    		$this->sendEmail($customer,$reminder->code);
+    		return redirect()->route('ui.customer.forgot')->with(['success' => "Reset code sent to your email !"]);
+    	} catch (Exception $e) {
+    		
+    	}
+        return view('ui.auth.password.email');
+    }
+
+    public function sendEmail($customer,$code)
+    {
+    	Mail::send(
+    		'email.forgot',
+    		['customer' => $customer],
+    		function($message) use ($customer)
+    		{
+    			$message->to($customer->email);
+    			$message->subject("$customer->name , reset your password");
+    		}
+    	);
+    }
+
 }
