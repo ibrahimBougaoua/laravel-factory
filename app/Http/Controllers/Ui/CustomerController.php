@@ -15,14 +15,14 @@ class CustomerController extends Controller
         return view('ui.signup.signup');
     }
 
-    public function store(Request $request)
+    public function store(CustomerRequest $request)
     {
-    	return $request;
+    	//return $request->except('_token','first_name');
     	try {
-                $customer = Customer::create([$request->all()]);
+                $customer = Customer::create($request->except('_token'));
 	    		
                 //Notification::send($employee,new EmployeeCreated($employee));
-	    		return redirect()->route('ui.dasgbaord')->with(['success' => 'welcome !']);
+	    		return redirect()->route('ui.get.login')->with(['success' => "You'r account has been created !"]);
     	} catch (Exception $e) {
     		return redirect()->route('ui.signup')->with(['error' => 'You have an error !']);
     	}

@@ -96,7 +96,7 @@
               <i class="fab fa-twitter"></i>
             </a>
           </li>
-          @if(!Auth::guard('customer')->check())
+          @if( Auth::guard('customer')->check() )
           <li class="nav-item">
             <a href="{{ route('ui.orders') }}" class="nav-link border border-light rounded waves-effect">
               <i class="fab fa-first-order mr-2"></i>Orders

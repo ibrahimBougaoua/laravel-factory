@@ -2,7 +2,13 @@
 
 @section('content')
 
-    <div class="container">
+  <!--Main layout-->
+  <main class="mt-5 pt-4">
+
+    @include('ui.alerts.success')
+    @include('ui.alerts.errors')
+
+    <div class="container dark-grey-text mt-5">
 
         <!-- Outer Row -->
         <div class="row justify-content-center">
@@ -78,5 +84,7 @@
 
     </div>
 
+  </main>
+  <!--Main layout-->
 
 @endsection('content')
