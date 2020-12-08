@@ -15,7 +15,7 @@ class LoginController extends Controller
     {
         $remembre_me = $request->has('remembre_me') ? true : false;
     	if (auth()->guard('customer')->attempt(['email' => $request->input("email"),'password' => $request->input("password")],$remembre_me)) {
-    		return redirect()->route('ui.dashbaord');
+    		return redirect()->route('ui.dashboard');
     	}
     	return redirect()->back()->with(['error' => 'error login']);
     }

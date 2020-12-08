@@ -36,7 +36,8 @@ Route::group(['prefix' => '/','middleware' => 'guest:customer'], function () {
        Route::post('/login','App\Http\Controllers\Ui\LoginController@checkLogin')->name('ui.login');
        Route::get('/signup','App\Http\Controllers\Ui\CustomerController@signup')->name('ui.signup');
        Route::post('/create','App\Http\Controllers\Ui\CustomerController@store')->name('ui.customer.store');
-       Route::get('/forgot','App\Http\Controllers\Ui\CustomerController@forgot')->name('ui.customer.forgot');
-       Route::post('/forgot_password', 'App\Http\Controllers\Ui\CustomerController@forgotPassword')->name('ui.customer.forgotPassword');
-       Route::post('/reset_password_with_token', 'App\Http\Controllers\Ui\CustomerController@ui.resetPassword');
+       Route::get('/forget-password','App\Http\Controllers\Ui\Auth\ForgotPasswordController@getEmail')->name('ui.customer.getEmail');
+       Route::post('/forget-password', 'App\Http\Controllers\Ui\Auth\ForgotPasswordController@postEmail')->name('ui.customer.postEmail');
+       Route::get('/reset-password/{token}', 'App\Http\Controllers\Ui\Auth\ResetPasswordController@getPassword');
+       Route::post('/reset-password', 'App\Http\Controllers\Ui\Auth\ResetPasswordController@updatePassword');
 });
