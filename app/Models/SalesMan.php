@@ -35,6 +35,13 @@ class SalesMan extends Model
 
     public $timestamps = false;
 
+    public function getStatusAttribute($value)
+    {
+        if ( $value == 0 )
+            return 'Active';
+        return 'deactivated';
+    }
+
     public function scopeGetOnlyMyEmployees($query)
     {
     	return $query->where('manage_id',Auth::id());
@@ -44,8 +51,7 @@ class SalesMan extends Model
     {
         return SalesMan::join('admins', 'sales_men.employee_id', '=', 'admins.id')->
                               join('point_of_sales', 'sales_men.point_sale_id', '=', 'point_of_sales.id')->
-                              select('admins.first_name','admins.email','admins.status','point_of_sales.name','sales_men.date','sales_men.employee_id','sales_men.manage_id','sales_men.point_sale_id','sales_men.id')->
-                              get();
+                              select('admins.first_name','admins.email','admins.status','point_of_sales.name','sales_men.date','sales_men.employee_id','sales_men.manage_id','sales_men.point_sale_id','sales_men.id');
     }
 
     public static function getSalesManById($id)

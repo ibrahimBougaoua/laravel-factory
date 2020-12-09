@@ -14,7 +14,7 @@ class SalesManController extends Controller
 {
     public function index()
     {
-    	$salesmen = SalesMan::getSalesMen();
+    	$salesmen = SalesMan::getSalesMen()->paginate(4);
     	return view('panel.salesman.index',compact('salesmen'));
     }
 
@@ -91,7 +91,10 @@ class SalesManController extends Controller
             if( ! $salesMan )
     			return redirect()->route('salesman.index')->with(['error' => "This sales man does not exist"]);
 
-            $salesMan->update(
+            if( $salesMan->manage_id != Auth::id() )
+                return redirect()->route('salesman.index')->with(['error' => "This sales man does not exist"]);
+
+            SalesMan::where('id',$id)->update(
                 $request->except(['_token'])
             );
 
