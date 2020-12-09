@@ -56,7 +56,7 @@ class Store extends Model
     	                     'stores.point_sale_id',
     	                     'stores.product_id',
     	                     'stores.id'
-    	              )->get();
+    	              )->paginate(4);
     }
 
     public static function getStoreByIds($id)

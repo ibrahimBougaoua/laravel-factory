@@ -2,21 +2,22 @@
 
 @section('content')
 
-                    <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">store</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-                    </div>
-
                     <!-- Content Row -->
                     <div class="row">
+
+                    <!-- Page Heading -->
+                    <div class="col-md-12">
+                        <nav class="nav navbar-light bg-white shadow p-1">
+                          <a class="nav-link disabled" href="#">All stores</a>
+                        </nav>
+                    </div>
 
                     @include('panel.alerts.success')
                     @include('panel.alerts.errors')
 
-                    <!-- Employees -->
-                    <div class="card shadow mb-4">
+                    <div class="col-md-12">
+                    <!-- stores -->
+                    <div class="card shadow mt-3">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">store</h6>
                         </div>
@@ -30,7 +31,6 @@
                                             <th>quantity store</th>
                                             <th>quantity sold</th>
                                             <th>Status</th>
-                                            <th>Created at</th>
                                             <th>View</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
@@ -43,7 +43,6 @@
                                             <th>quantity store</th>
                                             <th>quantity sold</th>
                                             <th>Status</th>
-                                            <th>Created at</th>
                                             <th>View</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
@@ -108,8 +107,17 @@
                                 </table>
                             </div>
                         </div>
-                    </div>
 
+                      <!--Pagination-->
+                      <div class="d-flex">
+                          <div class="mx-auto">
+                              {{$stores->links("pagination::bootstrap-4")}}
+                          </div>
+                      </div>
+                      <!--Pagination-->
+
+                    </div>
+                    </div>
 
                     </div>
 
