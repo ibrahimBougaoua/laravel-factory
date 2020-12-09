@@ -13,7 +13,7 @@ class PointOfSaleController extends Controller
 {
     public function index()
     {
-    	$pointsOfSales = PointOfSale::all();
+    	$pointsOfSales = PointOfSale::paginate(4);
     	return view('panel.pointofsale.index',compact('pointsOfSales'));
     }
 

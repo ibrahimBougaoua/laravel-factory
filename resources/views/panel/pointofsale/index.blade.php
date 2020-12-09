@@ -2,21 +2,23 @@
 
 @section('content')
 
-                    <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">points of sales</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-                    </div>
-
                     <!-- Content Row -->
                     <div class="row">
+
+                    <!-- Page Heading -->
+                    <div class="col-md-12">
+                        <nav class="nav navbar-light bg-white shadow p-1">
+                          <a class="nav-link disabled" href="#">All points of sales</a>
+                        </nav>
+                    </div>
 
                     @include('panel.alerts.success')
                     @include('panel.alerts.errors')
 
-                    <!-- Employees -->
-                    <div class="card shadow mb-4">
+                    <!-- points of sales -->
+                    
+                    <div class="col-md-12">
+                    <div class="card shadow mt-3">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">points of sales</h6>
                         </div>
@@ -28,11 +30,11 @@
                                             <th>Name</th>
                                             <th>Address</th>
                                             <th>Status</th>
-                                            <th>Factory</th>
                                             <th>Created at</th>
                                             <th>View</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
+                                            <th>Factory</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -40,11 +42,11 @@
                                             <th>Name</th>
                                             <th>Address</th>
                                             <th>Status</th>
-                                            <th>Factory</th>
                                             <th>Created at</th>
                                             <th>View</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
+                                            <th>Factory</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -53,14 +55,6 @@
                                             <td>{{$pointOfSale->name}}</td>
                                             <td>{{$pointOfSale->address}}</td>
                                             <td>{{$pointOfSale->status}}</td>
-                                            <td>
-                                                <a href="{{ route('factory.show',$pointOfSale->factory_id) }}" class="btn btn-primary btn-icon-split">
-                                                    <span class="icon text-white-50">
-                                                        <i class="fas fa-flag"></i>
-                                                    </span>
-                                                    <span class="text">View</span>
-                                                </a>
-                                            </td>
                                             <td>{{get_date($pointOfSale->created_at)}}</td>
                                             <td>        
                                                 <a href="{{ route('pointofsale.show',$pointOfSale->id) }}" class="btn btn-sm btn-primary btn-icon-split">
@@ -107,12 +101,30 @@
                                                 </div>
 
                                             </td>
+                                            <td>
+                                                <a href="{{ route('factory.show',$pointOfSale->factory_id) }}" class="btn btn-sm btn-primary btn-icon-split">
+                                                    <span class="icon text-white-50">
+                                                        <i class="fas fa-flag"></i>
+                                                    </span>
+                                                    <span class="text">View</span>
+                                                </a>
+                                            </td>
                                         </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
                             </div>
                         </div>
+
+                      <!--Pagination-->
+                      <div class="d-flex">
+                          <div class="mx-auto">
+                              {{$pointsOfSales->links("pagination::bootstrap-4")}}
+                          </div>
+                      </div>
+                      <!--Pagination-->
+
+                    </div>
                     </div>
 
 

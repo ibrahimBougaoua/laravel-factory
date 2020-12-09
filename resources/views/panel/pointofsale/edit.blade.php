@@ -2,18 +2,21 @@
 
 @section('content')
 
-                    <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Update point of sale</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-                    </div>
-
                     <!-- Content Row -->
                     <div class="row">
+                    
+                    <!-- Page Heading -->
+                    <div class="col-md-12">
+                        <nav class="nav navbar-light bg-white shadow p-1">
+                          <a class="nav-link" href="{{ route('pointofsale.index') }}">point of sale</a>
+                          <a class="nav-link disabled" href="#">/</a>
+                          <a class="nav-link disabled" href="#">Edit</a>
+                        </nav>
+                    </div>
+
                         <div class="col-md-12">
                             <!-- Employees -->
-                            <div class="card shadow mb-4">
+                            <div class="card shadow mt-3">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">Update point of sale</h6>
                                 </div>
@@ -30,13 +33,6 @@
                                         @enderror
                                       </div>
                                       <div class="form-group col-md-6">
-                                        <label for="exampleInputEmail1">Address</label>
-                                        <input type="text" name="address" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{ $pointOfSale->address }}">
-                                        @error('address')
-                                        <span class="text-danger"><small>{{$message}}</small></span>
-                                        @enderror
-                                      </div>
-                                      <div class="form-group col-md-6">
                                         <label for="exampleFormControlSelect1">Select a factory</label>
                                         <select class="form-control" name="factory_id" id="exampleFormControlSelect1">
                                         @foreach($factories as $factory)
@@ -48,7 +44,16 @@
                                         @endforeach
                                         </select>
                                       </div>
-                                      <button type="submit" class="btn btn-primary">Update</button>
+                                      <div class="form-group col-md-12">
+                                        <label for="exampleInputEmail1">Address</label>
+                                        <textarea class="form-control" name="address" id="exampleFormControlTextarea1" rows="5">{{ $pointOfSale->address }}</textarea>
+                                        @error('address')
+                                        <span class="text-danger"><small>{{$message}}</small></span>
+                                        @enderror
+                                      </div>
+                                      <div class="form-group col-md-12">
+                                        <button type="submit" class="btn btn-primary float-right">Update</button>
+                                      </div>
                                     </form>
                                 </div>
                             </div>
