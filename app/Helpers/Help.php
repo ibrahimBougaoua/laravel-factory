@@ -10,6 +10,11 @@ function genders()
 	return ['woman','man','other'];
 }
 
+function limit_text($text,$number)
+{
+	return substr_replace($text, "...", $number);
+}
+
 function upload_image($folder,$img)
 {
 	$img->store('/',$folder);

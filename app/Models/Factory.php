@@ -36,6 +36,11 @@ class Factory extends Model
     protected $hidden = [
     ];
 
+    public function getPointOfSales()
+    {
+        return $this->hasMany('App\Models\PointOfSale','factory_id','id');
+    }
+
     public function scopeGetOnlyMyFactories($query)
     {
     	return $query->where('employee_id',Auth::id());

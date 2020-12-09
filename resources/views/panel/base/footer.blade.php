@@ -53,7 +53,7 @@
     <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
     
     <!-- Custom scripts for all pages-->
-    <script src="{{asset('admin/vendor/js/sb-admin-2.min.js')}}"></script>
+    <script src="{{asset('admin/js/sb-admin-2.min.js')}}"></script>
 
     <!-- Page level plugins -->
     <script src="{{asset('admin/vendor/chart.js/Chart.min.js')}}"></script>

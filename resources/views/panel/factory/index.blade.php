@@ -2,21 +2,22 @@
 
 @section('content')
 
-                    <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Employees</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-                    </div>
-
                     <!-- Content Row -->
                     <div class="row">
+
+                    <!-- Page Heading -->
+                    <div class="col-md-12">
+                        <nav class="nav navbar-light bg-white shadow p-1">
+                          <a class="nav-link disabled" href="#">All factoreis</a>
+                        </nav>
+                    </div>
 
                     @include('panel.alerts.success')
                     @include('panel.alerts.errors')
 
-                    <!-- Employees -->
-                    <div class="card shadow mb-4">
+                    <div class="col-md-12">
+                    <!-- factories -->
+                    <div class="card shadow mt-3">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Factories</h6>
                         </div>
@@ -27,10 +28,7 @@
                                         <tr>
                                             <th>Name</th>
                                             <th>Description</th>
-                                            <th>Phone</th>
-                                            <th>Logo</th>
                                             <th>Status</th>
-                                            <th>Created at</th>
                                             <th>View</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
@@ -40,10 +38,7 @@
                                         <tr>
                                             <th>Name</th>
                                             <th>Description</th>
-                                            <th>Phone</th>
-                                            <th>Logo</th>
                                             <th>Status</th>
-                                            <th>Created at</th>
                                             <th>View</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
@@ -53,11 +48,8 @@
                                         @foreach($factories as $factory)
                                         <tr>
                                             <td>{{$factory->name}}</td>
-                                            <td>{{$factory->desc}}</td>
-                                            <td>{{$factory->phone}}</td>
-                                            <td><img src="{{$factory->logo}}" class="h-25 w-50" /></td>
+                                            <td class="text-break">{{limit_text($factory->desc,140)}}</td>
                                             <td>{{$factory->status}}</td>
-                                            <td>{{get_date($factory->created_at)}}</td>
                                             <td>        
                                                 <a href="{{ route('factory.show',$factory->id) }}" class="btn btn-sm btn-primary btn-icon-split">
                                                     <span class="icon text-white-50">
@@ -109,8 +101,17 @@
                                 </table>
                             </div>
                         </div>
-                    </div>
 
+                      <!--Pagination-->
+                      <div class="d-flex">
+                          <div class="mx-auto">
+                              {{$factories->links("pagination::bootstrap-4")}}
+                          </div>
+                      </div>
+                      <!--Pagination-->
+
+                    </div>
+                    </div>
 
                     </div>
 

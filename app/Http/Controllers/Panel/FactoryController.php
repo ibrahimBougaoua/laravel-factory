@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Factory;
+use App\Models\PointOfSale;
 use App\Http\Requests\FactoryRequest;
 
 class FactoryController extends Controller
@@ -13,7 +14,7 @@ class FactoryController extends Controller
 
     public function index()
     {
-    	$factories = Factory::getOnlyMyFactories()->get();
+    	$factories = Factory::getOnlyMyFactories()->paginate(6);
     	return view('panel.factory.index',compact('factories'));
     }
 
@@ -28,7 +29,7 @@ class FactoryController extends Controller
     		if (Auth::check()) {
 
 	    		$logo_path = "";
-	    		if($request->has('photo'))
+	    		if($request->has('logo'))
 	    			$logo_path = upload_image('factory/',$request->photo);
 	    		
                 $factories = Factory::create([
@@ -91,21 +92,14 @@ class FactoryController extends Controller
            if($factory->employee_id != Auth::id())
             return redirect()->route('factory.index')->with(['error' => "this factory does't exists"]);
 
-            if($request->has('photo'))
+            if($request->has('logo'))
             {
-                $photo_path = upload_image('profile/',$request->photo);
-                Factory::where('id',$id)->update(['photo' => $photo_path]);
+                $logo_path = upload_image('factory/',$request->logo);
+                Factory::where('id',$id)->update(['logo' => $logo_path]);
             }
 
-            $dataExcept = $request->except('_token','id','photo','password','repassword');
-
-            //if($request->has('password'))
-              //  $dataExcept['password'] = $request->password;
-
-            //return $dataExcept;
-
             Factory::where('id',$id)->update(
-                $dataExcept
+                $request->except('_token','id','logo','password','repassword')
             );
 
             return redirect()->route('factory.index')->with(['success' => "factory updated successfully"]);
@@ -123,11 +117,13 @@ class FactoryController extends Controller
             if( ! $factory )
     			return redirect()->route('factory.index')->with(['error' => "This factory does not exist"]);
 
-            if ($id == Auth::id())
-                return redirect()->route('factory.index')->with(['error' => "you can't delete you'r account"]);
-            
             if($factory->employee_id != Auth::id())
-                return redirect()->route('factory.index')->with(['error' => "you can't delete this account"]);
+                return redirect()->route('factory.index')->with(['error' => "you can't delete this factory"]);
+            
+            $pointOfSale = $factory->getPointOfSales;
+
+            if( isset($pointOfSale) && count($pointOfSale) > 0 )
+                return redirect()->route('factory.index')->with(['error' => "you can't delete this factory"]);
 
             $factory->delete();
     		

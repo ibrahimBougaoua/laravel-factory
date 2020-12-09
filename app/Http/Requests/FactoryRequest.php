@@ -24,9 +24,9 @@ class FactoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:100|min:3',
-            'desc' => 'required|string|max:100|min:3',
-            'phone' => 'required|string|max:80|min:3'
+            'name' => 'required|string|max:100|min:3|unique:factories,name,'.$this->id,
+            'desc' => 'required|string|max:400|min:50',
+            'phone' => 'sometimes|required|max:10|min:10|unique:factories,phone,'.$this->id,
         ];
     }
 
