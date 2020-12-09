@@ -14,7 +14,7 @@ class EmployeeController extends Controller
 {
     public function index()
     {
-    	$employees = Admin::exceptSelf()->get();
+    	$employees = Admin::exceptSelf()->paginate(4);
     	return view('panel.employee.index',compact('employees'));
     }
 

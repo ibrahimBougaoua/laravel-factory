@@ -2,23 +2,25 @@
 
 @section('content')
 
-                    <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Employees</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-                    </div>
-
                     <!-- Content Row -->
                     <div class="row">
                     
+                    <!-- Page Heading -->
+                    <div class="col-md-12">
+                        <nav class="nav navbar-light bg-white shadow p-1">
+                          <a class="nav-link" href="{{ route('employee.index') }}">All employees</a>
+                          <a class="nav-link disabled" href="#">/</a>
+                          <a class="nav-link disabled" href="#">Show</a>
+                        </nav>
+                    </div>
+
                     <div class="col-md-12">
                     <!-- Employees -->
-                    <div class="card shadow mb-4">
+                    <div class="card shadow mt-3">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Details</h6>
                         </div>
-                        <img src="{{ $employee->photo }}" class="card-img-top" alt="...">
+                        <img src="{{ $employee->photo }}" class="card-img-top rounded-0" alt="...">
                         <div class="card-body">
 							<div class="card">
 							  <div class="card-body">
@@ -33,7 +35,7 @@
 							    <p class="card-text">Status : {{ $employee->status }}</p>
 							  </div>
 							  <div class="card-body">
-                                <a href="{{ route('employee.show',$employee->id) }}" class="btn btn-success btn-icon-split">
+                                <a href="{{ route('employee.edit',$employee->id) }}" class="btn btn-success btn-icon-split mr-2">
                                     <span class="icon text-white-50">
                                         <i class="fas fa-check"></i>
                                     </span>

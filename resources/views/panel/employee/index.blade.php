@@ -2,21 +2,24 @@
 
 @section('content')
 
-                    <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Employees</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-                    </div>
-
                     <!-- Content Row -->
                     <div class="row">
+
+                    <!-- Page Heading -->
+                    <div class="col-md-12">
+                        <nav class="nav navbar-light bg-white shadow p-1">
+                          <a class="nav-link disabled" href="#">All employees</a>
+                          <a class="nav-link disabled" href="#">/</a>
+                          <a class="nav-link" href="{{ route('employee.create') }}">New employee</a>
+                        </nav>
+                    </div>
 
                     @include('panel.alerts.success')
                     @include('panel.alerts.errors')
 
+                    <div class="col-md-12">
                     <!-- Employees -->
-                    <div class="card shadow mb-4">
+                    <div class="card shadow mt-3">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Employees</h6>
                         </div>
@@ -26,12 +29,9 @@
                                     <thead>
                                         <tr>
                                             <th>First name</th>
-                                            <th>Last name</th>
                                             <th>E-mail</th>
-                                            <th>Gender</th>
                                             <th>City</th>
                                             <th>Status</th>
-                                            <th>Created at</th>
                                             <th>View</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
@@ -40,12 +40,9 @@
                                     <tfoot>
                                         <tr>
                                             <th>First name</th>
-                                            <th>Last name</th>
                                             <th>E-mail</th>
-                                            <th>Gender</th>
                                             <th>City</th>
                                             <th>Status</th>
-                                            <th>Created at</th>
                                             <th>View</th>
                                             <th>Edit</th>
                                             <th>Delete</th>
@@ -55,12 +52,9 @@
                                         @foreach($employees as $employee)
                                         <tr>
                                             <td>{{$employee->first_name}}</td>
-                                            <td>{{$employee->last_name}}</td>
                                             <td>{{$employee->email}}</td>
-                                            <td>{{$employee->gender}}</td>
                                             <td>{{$employee->city}}</td>
                                             <td>{{$employee->status}}</td>
-                                            <td>{{get_date($employee->created_at)}}</td>
                                             <td>        
                                                 <a href="{{ route('employee.show',$employee->id) }}" class="btn btn-sm btn-primary btn-icon-split">
                                                     <span class="icon text-white-50">
@@ -112,6 +106,16 @@
                                 </table>
                             </div>
                         </div>
+
+                      <!--Pagination-->
+                      <div class="d-flex">
+                          <div class="mx-auto">
+                              {{$employees->links("pagination::bootstrap-4")}}
+                          </div>
+                      </div>
+                      <!--Pagination-->
+
+                    </div>
                     </div>
 
 
