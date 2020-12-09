@@ -12,7 +12,7 @@ class CategoryController extends Controller
 {
     public function index()
     {
-    	$categories = Category::getOnlyMyCategories()->get();
+    	$categories = Category::getOnlyMyCategories()->paginate(1);
     	return view('panel.category.index',compact('categories'));
     }
 
