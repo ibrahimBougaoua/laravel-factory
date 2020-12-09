@@ -49,11 +49,11 @@
 <body>
 
   <!-- Navbar -->
-  <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark shadow-none h-menu scrolling-navbar" id="mainNav">
     <div class="container">
 
       <!-- Brand -->
-      <a class="navbar-brand waves-effect" href="https://mdbootstrap.com/docs/jquery/" target="_blank">
+      <a class="navbar-brand waves-effect" href="https://mdbootstrap.com/docs/jquery/">
         <strong class="blue-text">Factories</strong>
       </a>
 
@@ -69,7 +69,7 @@
         <!-- Left -->
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link waves-effect" href="/">Home
+            <a class="nav-link" href="/">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
@@ -125,10 +125,10 @@
           </li>
           @else
           <li class="nav-item">
-            <a class="nav-link waves-effect" href="{{ route('ui.get.login') }}">Signin</a>
+            <a class="nav-link btn btn-lg btn-outline-light text-light" href="{{ route('ui.get.login') }}">Signin</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link waves-effect" href="{{ route('ui.signup') }}">Signup</a>
+            <a class="nav-link btn btn-lg text-light" href="{{ route('ui.signup') }}" style="background-color: #007bff;">Getting started</a>
           </li>
           @endif
         

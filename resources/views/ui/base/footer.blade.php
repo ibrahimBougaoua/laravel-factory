@@ -83,12 +83,15 @@
   <!-- Bootstrap core JavaScript -->
   <script type="text/javascript" src="{{asset('ui/js/bootstrap.min.js')}}"></script>
   <!-- MDB core JavaScript -->
-  <script type="text/javascript" src="{{asset('ui/js/mdb.min.js')}}/"></script>
+  <script type="text/javascript" src="{{asset('ui/js/mdb.min.js')}}"></script>
+  <!-- Main JavaScript -->
+  <script type="text/javascript" src="{{asset('ui/js/main.js')}}"></script>
+  <!-- typed JavaScript -->
+  <script type="text/javascript" src="{{asset('ui/js/typed.min.js')}}"></script>
   <!-- Initializations -->
   <script type="text/javascript">
     // Animations initialization
     new WOW().init();
-
   </script>
 </body>
 
