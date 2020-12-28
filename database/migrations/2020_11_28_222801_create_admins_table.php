@@ -22,7 +22,7 @@ class CreateAdminsTable extends Migration
             $table->string('gender',15);
             $table->string('phone',20);
             $table->string('city',20);
-            $table->string('photo',200);
+            $table->string('photo',200)->nullable();
             $table->text('address');
             $table->boolean('status')->default(0);
             $table->boolean('trash')->default(0);

@@ -18,7 +18,7 @@ class CreateCategoriesTable extends Migration
             $table->string('name',150);
             $table->string('slug',200);
             $table->text('description');
-            $table->string('photo',200);
+            $table->string('photo',200)->nullable();
             $table->boolean('status')->default(0);
             $table->unsignedInteger('subcateid');
             $table->unsignedInteger('employee_id');

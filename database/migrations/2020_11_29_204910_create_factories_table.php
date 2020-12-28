@@ -17,7 +17,7 @@ class CreateFactoriesTable extends Migration
             $table->id();
             $table->string('name',150);
             $table->text('desc');
-            $table->string('logo',200);
+            $table->string('logo',200)->nullable();
             $table->string('phone',20);
             $table->boolean('status')->default(0);
             $table->unsignedInteger('employee_id');
