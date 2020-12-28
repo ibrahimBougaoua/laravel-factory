@@ -15,6 +15,15 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->string('name',150);
+            $table->text('description');
+            $table->string('quantity_unit',200);
+            $table->unsignedDecimal('unit_price', $precision = 8, $scale = 2);
+            $table->string('size',150);
+            $table->string('color',150);
+            $table->text('note');
+            $table->boolean('status')->default(0);
+            $table->unsignedInteger('cateid');
             $table->timestamps();
         });
     }

@@ -15,6 +15,10 @@ class CreateSalesMenTable extends Migration
     {
         Schema::create('sales_men', function (Blueprint $table) {
             $table->id();
+            $table->unsignedInteger('manage_id');
+            $table->unsignedInteger('employee_id');
+            $table->unsignedInteger('point_sale_id');
+            $table->date('date');
             $table->timestamps();
         });
     }

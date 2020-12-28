@@ -15,7 +15,10 @@ class CreateStoresTable extends Migration
     {
         Schema::create('stores', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->unsignedInteger('point_sale_id');
+            $table->unsignedInteger('product_id');
+            $table->string('quantity_store',200);
+            $table->string('quantity_sold',200);
         });
     }
 

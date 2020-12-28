@@ -15,6 +15,12 @@ class CreateFactoriesTable extends Migration
     {
         Schema::create('factories', function (Blueprint $table) {
             $table->id();
+            $table->string('name',150);
+            $table->text('desc');
+            $table->string('logo',200);
+            $table->string('phone',20);
+            $table->boolean('status')->default(0);
+            $table->unsignedInteger('employee_id');
             $table->timestamps();
         });
     }

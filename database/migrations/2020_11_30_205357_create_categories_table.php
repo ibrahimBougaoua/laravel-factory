@@ -15,6 +15,13 @@ class CreateCategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
+            $table->string('name',150);
+            $table->string('slug',200);
+            $table->text('description');
+            $table->string('photo',200);
+            $table->boolean('status')->default(0);
+            $table->unsignedInteger('subcateid');
+            $table->unsignedInteger('employee_id');
             $table->timestamps();
         });
     }
