@@ -2,19 +2,23 @@
 
 @section('content')
 
-  <div class="jumbotron" style="background-color: #3F51B5;height: 50vw;">
-    <div class="row">
-      <div class="col-md-6">
-        <div class="ml-5" style="position: relative;top: 8vw;left: 39px;">
-          <p class="display-4 lead text-white line-h" style="font-size: 35px;">Create your own platform to showcase the products of your factory</p>
-          <a class="btn btn-lg btn-outline-light ml-5" href="#contact" style="background-color: #007bff;">Login</a>
-          <a class="btn btn-lg text-light" href="#contact" style="background-color: #007bff;">Getting started </a>
-        </div>  
+  <div class="jumbotron" style="background-color: #3F51B5;">
+      <div class="container">
+        <div class="row mt-5">
+          <div class="col-md-7">
+              <h1 class="display-4 text-white font-weight-bold">Create your own platform to showcase the products of your factory.</h1>
+              <p class="display-5 lead text-white"># <span class="text-success font-weight-bold typing"></span></p>
+              <h3 class="text-white">We offer you a factory land platform so that you can add your factory's products, points of sale, workers, and a lot of features that enable you to display your products, so what are you waiting for ?</h3>
+              <div class="mt-4">
+                  <a class="btn btn-lg btn-outline-light ml-0" href="#contact" style="background-color: #007bff;"><i class="fas fa-lock-open"></i> Sign in</a>
+                  <a class="btn btn-lg text-light" href="#contact" style="background-color: #007bff;"><i class="fas fa-hourglass-start"></i> Getting started </a>
+              </div>
+          </div>
+          <div class="col-md-5 m-0 p-0">
+            <img src="{{asset('ui/images/factory_worker.png')}}" class="img-fluid mt-5" alt="Responsive image">
+          </div>
+        </div>
       </div>
-      <div class="col-md-6 pr-5">
-        <img src="{{asset('ui/images/factory_worker.png')}}" class="img-fluid mt-5" alt="Responsive image">
-      </div>
-    </div>
   </div>
 
   <!--Main layout-->

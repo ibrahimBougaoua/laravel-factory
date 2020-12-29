@@ -14,7 +14,7 @@
   <link href="{{asset('ui/css/mdb.min.css')}}" rel="stylesheet">
   <!-- Your custom styles (optional) -->
   <link href="{{asset('ui/css/style.min.css')}}" rel="stylesheet">
-  
+
   <style type="text/css">
     html,
     body,
@@ -53,8 +53,8 @@
     <div class="container">
 
       <!-- Brand -->
-      <a class="navbar-brand waves-effect" href="https://mdbootstrap.com/docs/jquery/">
-        <strong class="blue-text">Factories</strong>
+      <a class="navbar-brand" href="/">
+          <h2 class="display-5">Factories <span class="text-primary">Land</span></h2>
       </a>
 
       <!-- Collapse -->
@@ -66,17 +66,8 @@
       <!-- Links -->
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-        <!-- Left -->
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="/">Home
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-        </ul>
-
         <!-- Right -->
-        <ul class="navbar-nav nav-flex-icons">
+        <ul class="navbar-nav nav-flex-icons ml-auto">
           @if(Auth::guard('customer')->check())
           <li class="nav-item">
             <a class="nav-link waves-effect" href="{{route('product.viewCart')}}">
@@ -86,16 +77,6 @@
             </a>
           </li>
           @endif
-          <li class="nav-item">
-            <a href="https://www.facebook.com/mdbootstrap" class="nav-link waves-effect" target="_blank">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="https://twitter.com/MDBootstrap" class="nav-link waves-effect" target="_blank">
-              <i class="fab fa-twitter"></i>
-            </a>
-          </li>
           @if( Auth::guard('customer')->check() )
           <li class="nav-item">
             <a href="{{ route('ui.orders') }}" class="nav-link border border-light rounded waves-effect">
@@ -125,13 +106,13 @@
           </li>
           @else
           <li class="nav-item">
-            <a class="nav-link btn btn-lg btn-outline-light text-light" href="{{ route('ui.get.login') }}">Signin</a>
+            <a class="nav-link btn btn-lg btn-outline-light text-white" href="{{ route('ui.get.login') }}"><i class="fas fa-door-open"></i> Sign in</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link btn btn-lg text-light" href="{{ route('ui.signup') }}" style="background-color: #007bff;">Getting started</a>
+            <a class="nav-link btn btn-lg text-white" href="{{ route('ui.signup') }}" style="background-color: #007bff;"><i class="fas fa-box-open"></i> Sign up</a>
           </li>
           @endif
-        
+
         </ul>
 
       </div>
