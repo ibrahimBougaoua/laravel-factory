@@ -2,6 +2,8 @@
 
 @section('content')
 
+  @include('ui.base.jumbotron')
+
   <!--Main layout-->
   <main class="mt-5 pt-4">
 

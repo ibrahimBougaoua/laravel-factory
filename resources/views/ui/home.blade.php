@@ -34,6 +34,8 @@
         <!--Grid row-->
         <div class="row wow fadeIn">
 
+        @if(Auth::guard('customer')->check())
+
           <div class="col-md-12 p-5 text-muted text-center">
             <h4 class="h4">Trending products</h4>
           </div>
@@ -84,6 +86,14 @@
           </div>
           <!--Grid column-->
           @endforeach
+
+          @else
+
+                <div class="col-md-12 p-5 text-muted text-center">
+                    <h4 class="h4">Create an account</h4>
+                </div>
+
+          @endif
 
         </div>
         <!--Grid row-->

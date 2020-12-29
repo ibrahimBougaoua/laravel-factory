@@ -7,10 +7,12 @@ $(document).ready(function(){
         $(".fixed-top").addClass("navbar-light");
         $(".fixed-top").addClass("bg-white");
         $(".fixed-top").addClass("shadow");
+        $(".text-logo").addClass("text-primary");
       $(".fixed-top").addClass("nav-fixed-top");
       $(".contact-btn").css("color", "white");
     } else {
       $(".fixed-top").removeClass("nav-fixed-top");
+        $(".text-logo").removeClass("text-primary");
         $(".fixed-top").removeClass("navbar-light");
         $(".fixed-top").removeClass("bg-white");
         $(".fixed-top").removeClass("shadow");

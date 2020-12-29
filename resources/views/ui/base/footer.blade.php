@@ -6,7 +6,7 @@
                     <div class="row">
                         <aside class="col-md-4">
                             <article class="mr-3">
-                                <h1 class="display-4 text-muted font-weight-bold">Factories <span class="text-warning">Land</span></h1>
+                                <h1 class="display-4 text-primary font-weight-bold">Factories <span class="text-warning">Land</span></h1>
                                 <p class="mt-3 description">Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                             </article>
                         </aside>

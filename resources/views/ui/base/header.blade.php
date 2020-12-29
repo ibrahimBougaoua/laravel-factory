@@ -54,7 +54,7 @@
 
       <!-- Brand -->
       <a class="navbar-brand" href="/">
-          <h2 class="display-5 font-weight-bold">Factories <span class="text-warning">Land</span></h2>
+          <h2 class="display-5 font-weight-bold text-logo">Factories <span class="text-warning">Land</span></h2>
       </a>
 
       <!-- Collapse -->
