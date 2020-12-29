@@ -18,7 +18,6 @@ class CreateSalesMenTable extends Migration
             $table->unsignedInteger('manage_id');
             $table->unsignedInteger('employee_id');
             $table->unsignedInteger('point_sale_id');
-            $table->date('date');
             $table->timestamps();
         });
     }

@@ -31,19 +31,20 @@ class EmployeeController extends Controller
 	    		$photo_path = "";
 	    		if($request->has('photo'))
 	    			$photo_path = upload_image('profile/',$request->photo);
-	    		
+
                 $employee = Admin::create([
 	    			'first_name' => $request->first_name,
 	    			'last_name' => $request->last_name,
 	    			'email' => $request->email,
 	    			'password' => $request->password,
 	    			'phone' => $request->phone,
-	    			'city' => $request->city,
+                    'city' => $request->city,
+                    'gender' => $request->gender,
 	    			'address' => $request->address,
 	    			'photo' => $photo_path,
 	    			'manage_id' => Auth::id(),
 	    		]);
-	    		
+
                 Notification::send($employee,new EmployeeCreated($employee));
 	    		return redirect()->route('employee.index')->with(['success' => 'Employee added successfully !']);
 	    	}
@@ -79,7 +80,7 @@ class EmployeeController extends Controller
 
             if($employee->manage_id != Auth::id() && $id != Auth::id())
                 return redirect()->route('employee.index')->with(['error' => "this employee does't exists"]);
-            
+
             return view('panel.employee.edit',compact('employee'));
         } catch (Exception $e) {
             return redirect()->route('employee.edit')->with(['error' => 'some error']);
@@ -90,10 +91,10 @@ class EmployeeController extends Controller
     {
     	try {
            $employee = Admin::find($id);
-           
+
            if( ! $employee )
             return redirect()->route('employee.index')->with(['error' => "this employee does't exists"]);
-           
+
            if($employee->manage_id != Auth::id())
             return redirect()->route('employee.index')->with(['error' => "this employee does't exists"]);
 
@@ -125,13 +126,13 @@ class EmployeeController extends Controller
     {
     	try {
     		$employee = Admin::find($id);
-    		
+
             if( ! $employee )
     			return redirect()->route('employee.index')->with(['error' => "This employee does not exist"]);
 
             if ($id == Auth::id())
                 return redirect()->route('employee.index')->with(['error' => "you can't delete you'r account"]);
-            
+
             if($employee->manage_id != Auth::id())
                 return redirect()->route('employee.index')->with(['error' => "you can't delete this account"]);
 
@@ -141,7 +142,7 @@ class EmployeeController extends Controller
                 return redirect()->route('employee.index')->with(['error' => "you can't delete this account"]);
 
             $employee->delete();
-    		
+
             return redirect()->route('employee.index')->with(['success' => 'Employee delete successfully']);
     	} catch (Exception $e) {
     		return redirect()->route('employee.index')->with(['error' => "you can't delete this account"]);

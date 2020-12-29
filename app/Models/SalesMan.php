@@ -10,9 +10,9 @@ use DB;
 class SalesMan extends Model
 {
     use Notifiable;
-    
+
     protected $table = "sales_men";
-    
+
     /**
      * The attributes that are mass assignable.
      *
@@ -21,8 +21,7 @@ class SalesMan extends Model
     protected $fillable = [
     	'manage_id',
         'employee_id',
-        'point_sale_id',
-        'date'
+        'point_sale_id'
     ];
 
     /**
@@ -32,8 +31,6 @@ class SalesMan extends Model
      */
     protected $hidden = [
     ];
-
-    public $timestamps = false;
 
     public function getStatusAttribute($value)
     {
@@ -51,7 +48,7 @@ class SalesMan extends Model
     {
         return SalesMan::join('admins', 'sales_men.employee_id', '=', 'admins.id')->
                               join('point_of_sales', 'sales_men.point_sale_id', '=', 'point_of_sales.id')->
-                              select('admins.first_name','admins.email','admins.status','point_of_sales.name','sales_men.date','sales_men.employee_id','sales_men.manage_id','sales_men.point_sale_id','sales_men.id');
+                              select('admins.first_name','admins.email','admins.status','point_of_sales.name','sales_men.created_at','sales_men.employee_id','sales_men.manage_id','sales_men.point_sale_id','sales_men.id');
     }
 
     public static function getSalesManById($id)
@@ -59,7 +56,7 @@ class SalesMan extends Model
         return SalesMan::where('sales_men.id',$id)->
                               join('admins', 'sales_men.employee_id', '=', 'admins.id')->
                               join('point_of_sales', 'sales_men.point_sale_id', '=', 'point_of_sales.id')->
-                              select('admins.first_name','admins.email','admins.status','point_of_sales.name','sales_men.date','sales_men.employee_id','sales_men.manage_id','sales_men.point_sale_id','sales_men.id')->
+                              select('admins.first_name','admins.email','admins.status','point_of_sales.name','sales_men.created_at','sales_men.employee_id','sales_men.manage_id','sales_men.point_sale_id','sales_men.id')->
                               first();
     }
 }
