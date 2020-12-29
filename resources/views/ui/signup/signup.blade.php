@@ -2,8 +2,10 @@
 
 @section('content')
 
+    @include('ui.base.jumbotron',['title' => 'Create an account.'])
+
   <!--Main layout-->
-  <main class="mt-5 pt-4">
+  <main class="m-5">
 
     @include('ui.alerts.success')
     @include('ui.alerts.errors')
@@ -11,6 +13,7 @@
     <div class="container dark-grey-text mt-5">
     <div class="row my-2">
         <div class="col-lg-12 order-lg-2">
+            <div class="card o-hidden border-0 shadow">
                         <form action="{{ route('ui.customer.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-row">
@@ -75,9 +78,9 @@
                             <label class="col-lg-12 col-form-label form-control-label">City</label>
                             <div class="col-lg-12">
                                 <select id="customer_gender" name="city" class="form-control" size="0">
-                                    <option value="man">city 1</option>
-                                    <option value="woman">woman</option>
-                                    <option value="other">other</option>
+                                    @foreach(list_of_city() as $city)
+                                        <option value="{{ $city }}">{{ $city }}</option>
+                                    @endforeach
                                 </select>
                                 @error('city')
                                  <span class="text-danger"><small>{{$message}}</small></span>
@@ -94,13 +97,13 @@
                             </div>
                         </div>
                         <div class="form-group col-md-12">
-                            <label class="col-lg-3 col-form-label form-control-label"></label>
                             <div class="col-lg-12">
-                                <input type="submit" class="btn btn-primary float-right mr-0" value="Save Changes">
+                                <input type="submit" class="btn btn-primary float-right" value="Save Changes">
                             </div>
                         </div>
                         </div>
                     </form>
+            </div>
         </div>
     </div>
 </div>
