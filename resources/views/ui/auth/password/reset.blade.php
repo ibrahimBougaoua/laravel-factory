@@ -2,6 +2,7 @@
 
 @section('content')
 
+    @include('ui.base.jumbotron',['title' => 'Reset you\'r password.'])
   <!--Main layout-->
   <main class="mt-5 pt-4">
 
