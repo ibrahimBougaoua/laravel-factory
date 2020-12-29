@@ -106,7 +106,7 @@
           </li>
           @else
           <li class="nav-item">
-            <a class="nav-link btn btn-lg btn-outline-light text-white" href="{{ route('ui.get.login') }}"><i class="fas fa-door-open"></i> Sign in</a>
+            <a class="nav-link btn btn-lg bg-primary text-white" href="{{ route('ui.get.login') }}"><i class="fas fa-door-open"></i> Sign in</a>
           </li>
           <li class="nav-item">
             <a class="nav-link btn btn-lg text-white bg-warning" href="{{ route('ui.signup') }}"><i class="fas fa-box-open"></i> Sign up</a>

@@ -2,13 +2,12 @@
   <!--Footer-->
           <footer class="section-footer border-top">
             <div class="container-fluid">
-                <section class="footer-top padding-y">
+                <section class="footer-top p-3">
                     <div class="row">
                         <aside class="col-md-4">
                             <article class="mr-3">
-                                <h1 class="display-4 text-primary">Factories Land</h1>
+                                <h1 class="display-4 text-muted font-weight-bold">Factories <span class="text-warning">Land</span></h1>
                                 <p class="mt-3 description">Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                                <div> <a class="btn btn-icon btn-light" title="Facebook" target="_blank" href="#" data-abc="true"><i class="fab fa-facebook-f"></i></a> <a class="btn btn-icon btn-light" title="Instagram" target="_blank" href="#" data-abc="true"><i class="fab fa-instagram"></i></a> <a class="btn btn-icon btn-light" title="Youtube" target="_blank" href="#" data-abc="true"><i class="fab fa-youtube"></i></a> <a class="btn btn-icon btn-light" title="Twitter" target="_blank" href="#" data-abc="true"><i class="fab fa-twitter"></i></a> </div>
                             </article>
                         </aside>
                         <aside class="col-sm-3 col-md-2">
