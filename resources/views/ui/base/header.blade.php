@@ -54,7 +54,7 @@
 
       <!-- Brand -->
       <a class="navbar-brand" href="/">
-          <h2 class="display-5">Factories <span class="text-primary">Land</span></h2>
+          <h2 class="display-5 font-weight-bold">Factories <span class="text-warning">Land</span></h2>
       </a>
 
       <!-- Collapse -->
@@ -109,7 +109,7 @@
             <a class="nav-link btn btn-lg btn-outline-light text-white" href="{{ route('ui.get.login') }}"><i class="fas fa-door-open"></i> Sign in</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link btn btn-lg text-white" href="{{ route('ui.signup') }}" style="background-color: #007bff;"><i class="fas fa-box-open"></i> Sign up</a>
+            <a class="nav-link btn btn-lg text-white bg-warning" href="{{ route('ui.signup') }}"><i class="fas fa-box-open"></i> Sign up</a>
           </li>
           @endif
 

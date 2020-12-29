@@ -7,11 +7,11 @@
         <div class="row mt-5">
           <div class="col-md-7">
               <h1 class="display-4 text-white font-weight-bold">Create your own platform to showcase the products of your factory.</h1>
-              <p class="display-5 lead text-white"># <span class="text-success font-weight-bold typing"></span></p>
+              <p class="display-5 lead text-warning"># <span class="text-warning font-weight-bold typing"></span></p>
               <h3 class="text-white">We offer you a factory land platform so that you can add your factory's products, points of sale, workers, and a lot of features that enable you to display your products, so what are you waiting for ?</h3>
               <div class="mt-4">
-                  <a class="btn btn-lg btn-outline-light ml-0" href="#contact" style="background-color: #007bff;"><i class="fas fa-lock-open"></i> Sign in</a>
-                  <a class="btn btn-lg text-light" href="#contact" style="background-color: #007bff;"><i class="fas fa-hourglass-start"></i> Getting started </a>
+                  <a class="btn btn-lg btn-outline-light ml-0" href="#contact"><i class="fas fa-lock-open"></i> Sign in</a>
+                  <a class="btn btn-lg text-light bg-primary" href="#contact"><i class="fas fa-hourglass-start"></i> Getting started </a>
               </div>
           </div>
           <div class="col-md-5 m-0 p-0">
