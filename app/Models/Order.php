@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Order extends Model
 {
@@ -25,6 +26,18 @@ class Order extends Model
      */
     protected $hidden = [
     ];
+
+    public static function total()
+    {
+        $carts = Order::all()->transform(function($cart,$key){
+            return unserialize($cart->cart);
+        });
+        $value = 0;
+        foreach ($carts as $price) {
+            $value += $price->totalPrice;
+        }
+        return $value;
+    }
 
     public function costomer($value='')
     {

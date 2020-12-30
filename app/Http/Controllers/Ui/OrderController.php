@@ -16,4 +16,5 @@ class OrderController extends Controller
     	});
     	return view('ui.order.index',compact('carts'));
     }
+
 }
