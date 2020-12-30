@@ -2,19 +2,17 @@
 
 @section('content')
 
-  <!--Main layout-->
-  <main class="mt-5 pt-4">
+    @include('ui.base.jumbotron',['title' => 'Cart.'])
+
+    <!--Main layout-->
+  <main class="m-5">
     <div class="container wow fadeIn">
-
-
-      <!-- Heading -->
-      <h2 class="my-5 h2 text-center">Cart</h2>
 
       <!--Grid row-->
       <div class="row">
 
         <!--Grid column-->
-        <div class="col-md-8 mb-4">
+        <div class="col-md-12 mb-4">
 
           <!--Card-->
           <div class="card">
@@ -24,7 +22,7 @@
 
               <!--Grid row-->
               <div class="row">
-        
+
         @if($cart)
         <!--Grid column-->
         <div class="col-md-12 mb-4">
@@ -34,7 +32,7 @@
             <span class="text-muted">Your cart</span>
             <span class="badge badge-secondary badge-pill">{{ $cart->totalQty }}</span>
           </h4>
-          
+
           <!-- Cart -->
           <ul class="list-group mb-3 z-depth-1">
 
@@ -50,7 +48,7 @@
             <li class="list-group-item d-flex justify-content-between lh-condensed">
               <!-- update -->
               <form class="card p-2" method="POST" action="{{ route('product.change',$product['id']) }}">
-                
+
                 <div class="input-group">
                   <input type="text" class="form-control" name="" aria-label="Recipient's username" aria-describedby="basic-addon2" value="{{ $product['qty'] }}">
                   <div class="input-group-append">
@@ -78,7 +76,9 @@
         <!--Grid column-->
 
           @else
-            <h1>There are No Items in the cart.</h1>
+            <div class="m-3">
+                <h1>There are No Items in the cart.</h1>
+            </div>
         @endif
 
       </div>

@@ -36,7 +36,7 @@
                                 <fieldset class="form-group position-relative has-icon-left">
                                     <input type="password" name="password" class="form-control form-control-lg input-lg"
                                            id="user-password"
-                                           placeholder="أدخل كلمة المرور">
+                                           placeholder="Password">
                                     <div class="form-control-position">
                                         <i class="la la-key"></i>
                                     </div>

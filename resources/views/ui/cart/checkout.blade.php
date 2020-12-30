@@ -2,10 +2,11 @@
 
 @section('content')
 
+    @include('ui.base.jumbotron',['title' => 'Checkout form amount.'])
+
   <!--Main layout-->
   <main class="mt-5 pt-4">
     <div class="container wow fadeIn">
-
 
       <!-- Heading -->
       <h2 class="my-5 h2 text-center">Checkout form amount : {{ $amount }}</h2>
@@ -53,7 +54,7 @@
   window.onload = function () {
     // Set your publishable key: remember to change this to your live publishable key in production
     // See your keys here: https://dashboard.stripe.com/account/apikeys
-    var stripe = Stripe('pk_test_9kWsHB0acIpqscwk0ZeAz4Wi00yXeEAWBi');
+    var stripe = Stripe('pk_test_51I3qURCqeKPjSSW3xkyH49T9GzUaSfRTwc20i1P3r1Ofl0ID4STfPnAIifBn4xNT3hPwj3dA2eUlvsOk7pZyAWk200QPeCGlxT');
     var elements = stripe.elements();
 
     // Custom styling can be passed to options when creating an Element.
