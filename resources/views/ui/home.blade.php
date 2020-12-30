@@ -28,10 +28,55 @@
       @include('panel.alerts.success')
       @include('panel.alerts.errors')
 
-      <!--Section: Products v.3-->
       <section class="text-center mb-4">
+          <div class="row wow fadeIn">
 
-        <!--Grid row-->
+              <div class="col-md-12 p-5 text-muted text-center">
+                  <h4 class="h4">Factories</h4>
+              </div>
+
+          @foreach($factories as $factory)
+              <!--Grid column-->
+                  <div class="col-lg-4 col-md-8 mb-4">
+
+                      <!--Card-->
+                      <div class="card">
+
+                          <!--Card image-->
+                          <div class="view overlay">
+                              <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12.jpg" class="card-img-top"
+                                   alt="">
+                              <a>
+                                  <div class="mask rgba-white-slight"></div>
+                              </a>
+                          </div>
+                          <!--Card image-->
+
+                          <!--Card content-->
+                          <div class="card-body text-center">
+                              <!--Category & Title-->
+                              <a href="" class="grey-text">
+                                  <h5>{{$factory->name}}</h5>
+                              </a>
+
+                              <p class="font-weight-bold text-muted">{{$factory->desc}}</p>
+
+                              <a href="{{ route('ui.product.show',$factory->id) }}" class="btn btn-primary">Show more</a>
+
+                          </div>
+                          <!--Card content-->
+
+                      </div>
+                      <!--Card-->
+
+                  </div>
+                  <!--Grid column-->
+              @endforeach
+
+          </div>
+          <!--Grid row-->
+
+
         <div class="row wow fadeIn">
 
           <div class="col-md-12 p-5 text-muted text-center">
