@@ -2,9 +2,11 @@
 
 @section('content')
 
+  @include('ui.base.jumbotron',['title' => 'Show product details.'])
+
   <!--Main layout-->
-  <main class="mt-5 pt-4">
-    <div class="container dark-grey-text mt-5">
+  <main class="m-5">
+    <div class="container dark-grey-text">
 
       <!--Grid row-->
       <div class="row wow fadeIn">

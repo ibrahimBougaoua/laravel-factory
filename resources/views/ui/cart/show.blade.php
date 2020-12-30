@@ -2,7 +2,7 @@
 
 @section('content')
 
-    @include('ui.base.jumbotron',['title' => 'Cart.'])
+    @include('ui.base.jumbotron',['title' => 'Show items in the cart.'])
 
     <!--Main layout-->
   <main class="m-5">
