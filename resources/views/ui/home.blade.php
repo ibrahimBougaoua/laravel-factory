@@ -61,7 +61,7 @@
 
                               <p class="font-weight-bold text-muted">{{$factory->desc}}</p>
 
-                              <a href="{{ route('ui.product.show',$factory->id) }}" class="btn btn-primary">Show more</a>
+                              <a href="{{ route('ui.factory.show',$factory->id) }}" class="btn btn-primary">Show more</a>
 
                           </div>
                           <!--Card content-->

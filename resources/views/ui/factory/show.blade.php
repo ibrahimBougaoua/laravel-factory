@@ -63,6 +63,44 @@
         </div>
         <!--Grid column-->
 
+      @foreach($factory->getPointOfSales as $pointOfSales)
+          <!--Grid column-->
+              <div class="col-lg-4 col-md-8 mb-4">
+
+                  <!--Card-->
+                  <div class="card">
+
+                      <!--Card image-->
+                      <div class="view overlay">
+                          <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12.jpg" class="card-img-top"
+                               alt="">
+                          <a>
+                              <div class="mask rgba-white-slight"></div>
+                          </a>
+                      </div>
+                      <!--Card image-->
+
+                      <!--Card content-->
+                      <div class="card-body text-center">
+                          <!--Category & Title-->
+                          <a href="" class="grey-text">
+                              <h5>{{$pointOfSales->name}}</h5>
+                          </a>
+
+                          <p class="font-weight-bold text-muted">{{$pointOfSales->address}}</p>
+
+                          <a href="{{ route('ui.factory.show',$pointOfSales->id) }}" class="btn btn-primary">Show more</a>
+
+                      </div>
+                      <!--Card content-->
+
+                  </div>
+                  <!--Card-->
+
+              </div>
+              <!--Grid column-->
+          @endforeach
+
       </div>
       <!--Grid row-->
 

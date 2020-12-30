@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Factory extends Model
 {
-    
+
     use Notifiable;
-    
+
     protected $table = "factories";
-    
+
     /**
      * The attributes that are mass assignable.
      *
