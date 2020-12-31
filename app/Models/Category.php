@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     protected $table = "categories";
-    
+
     /**
      * The attributes that are mass assignable.
      *
@@ -36,6 +36,11 @@ class Category extends Model
     public function scopeGetOnlyMyCategories($query)
     {
     	return $query->where('employee_id',Auth::id());
+    }
+
+    public function products()
+    {
+        return $this->hasMany('App\Models\Product','cateid','id');
     }
 
     public function getPhotoAttribute($value)

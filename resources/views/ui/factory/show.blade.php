@@ -4,6 +4,8 @@
 
   @include('ui.base.jumbotron',['title' => 'Factory details.'])
 
+  {{ $factory->getCategoriesByFactoryId(2) }}
+
   <!--Main layout-->
   <main class="m-5">
     <div class="container dark-grey-text">
@@ -101,6 +103,20 @@
 
       </div>
       <!--Grid row-->
+
+        <div class="row wow fadeIn">
+            <div class="col-md-12 p-5 text-muted text-center">
+                <h4 class="h4">Categories</h4>
+            </div>
+            <div class="col-lg-3 col-md-12 mb-4">
+                <div class="flex-column">
+                        @foreach($factory->getCategoriesByFactoryId($factory->id) as $cate)
+                           <a href="{{ $cate->id  }}" class="btn btn-outline-dark">{{ $cate->name }}</a>
+                        @endforeach
+                </div>
+            </div>
+        </div>
+        <!--Grid row-->
 
         <div class="row wow fadeIn">
 

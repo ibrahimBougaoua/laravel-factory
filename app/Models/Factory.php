@@ -58,7 +58,15 @@ class Factory extends Model
             'products.status')->get();
     }
 
-
+    public static function getCategoriesByFactoryId($id)
+    {
+        return Factory::where('factories.id',$id)->
+        join('point_of_sales', 'factories.id', '=', 'point_of_sales.factory_id')->
+        join('stores', 'point_of_sales.id', '=', 'stores.point_sale_id')->
+        join('products', 'stores.product_id', '=', 'products.id')->
+        join('categories', 'products.cateid', '=', 'categories.id')->
+        select('categories.id','categories.name','categories.slug','categories.description','categories.created_at',)->get();
+    }
 
     public function scopeGetOnlyMyFactories($query)
     {
