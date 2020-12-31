@@ -89,8 +89,6 @@
 
                           <p class="font-weight-bold text-muted">{{$pointOfSales->address}}</p>
 
-                          <a href="{{ route('ui.factory.show',$pointOfSales->id) }}" class="btn btn-primary">Show more</a>
-
                       </div>
                       <!--Card content-->
 
@@ -104,55 +102,62 @@
       </div>
       <!--Grid row-->
 
-      <hr>
+        <div class="row wow fadeIn">
 
-      <!--Grid row-->
-      <div class="row d-flex justify-content-center wow fadeIn">
+            <div class="col-md-12 p-5 text-muted text-center">
+                <h4 class="h4">Products</h4>
+            </div>
 
-        <!--Grid column-->
-        <div class="col-md-6 text-center">
+        @foreach($factory->getProductByFactoryId($factory->id) as $product)
+            <!--Grid column-->
+                <div class="col-lg-3 col-md-6 mb-4">
 
-          <h4 class="my-4 h4">Additional information</h4>
+                    <!--Card-->
+                    <div class="card">
 
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus suscipit modi sapiente illo soluta odit
-            voluptates,
-            quibusdam officia. Neque quibusdam quas a quis porro? Molestias illo neque eum in laborum.</p>
+                        <!--Card image-->
+                        <div class="view overlay">
+                            <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12.jpg" class="card-img-top"
+                                 alt="">
+                            <a>
+                                <div class="mask rgba-white-slight"></div>
+                            </a>
+                        </div>
+                        <!--Card image-->
+
+                        <!--Card content-->
+                        <div class="card-body text-center">
+                            <!--Category & Title-->
+                            <a href="" class="grey-text">
+                                <h5>{{$product->name}}</h5>
+                            </a>
+                            <h5>
+                                <strong>
+                                    <a href="" class="dark-grey-text">{{$product->name}}
+                                        <span class="badge badge-pill danger-color">NEW</span>
+                                    </a>
+                                </strong>
+                            </h5>
+
+                            <h4 class="font-weight-bold blue-text">
+                                <strong>{{$product->unit_price}}$</strong>
+                            </h4>
+
+                            <a href="{{ route('ui.product.show',$product->id) }}" class="dark-grey-text">Show more</a>
+
+                        </div>
+                        <!--Card content-->
+
+                    </div>
+                    <!--Card-->
+
+                </div>
+                <!--Grid column-->
+            @endforeach
 
         </div>
-        <!--Grid column-->
+        <!--Grid row-->
 
-      </div>
-      <!--Grid row-->
-
-      <!--Grid row-->
-      <div class="row wow fadeIn">
-
-        <!--Grid column-->
-        <div class="col-lg-4 col-md-12 mb-4">
-
-          <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/11.jpg" class="img-fluid" alt="">
-
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-lg-4 col-md-6 mb-4">
-
-          <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/12.jpg" class="img-fluid" alt="">
-
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-lg-4 col-md-6 mb-4">
-
-          <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/13.jpg" class="img-fluid" alt="">
-
-        </div>
-        <!--Grid column-->
-
-      </div>
-      <!--Grid row-->
 
     </div>
   </main>

@@ -41,6 +41,25 @@ class Factory extends Model
         return $this->hasMany('App\Models\PointOfSale','factory_id','id');
     }
 
+    public static function getProductByFactoryId($id)
+    {
+        return Factory::where('factories.id',$id)->
+        join('point_of_sales', 'factories.id', '=', 'point_of_sales.factory_id')->
+        join('stores', 'point_of_sales.id', '=', 'stores.point_sale_id')->
+        join('products', 'stores.product_id', '=', 'products.id')->
+        select('products.id',
+            'products.name as product_name',
+            'products.description',
+            'products.quantity_unit',
+            'products.unit_price',
+            'products.size',
+            'products.color',
+            'products.note',
+            'products.status')->get();
+    }
+
+
+
     public function scopeGetOnlyMyFactories($query)
     {
     	return $query->where('employee_id',Auth::id());
