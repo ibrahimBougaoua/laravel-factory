@@ -16,3 +16,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/','App\Http\Controllers\Ui\HomeController@index')->name('ui.product');
 Route::get('/product/{id}','App\Http\Controllers\Ui\ProductController@show')->name('ui.product.show');
 Route::get('/factory/{id}','App\Http\Controllers\Ui\FactoryController@show')->name('ui.factory.show');
+Route::get('/category/{id}','App\Http\Controllers\Ui\CategoryController@show')->name('ui.category.show');

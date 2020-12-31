@@ -2,9 +2,7 @@
 
 @section('content')
 
-  @include('ui.base.jumbotron',['title' => 'Factory details.'])
-
-  {{ $factory->getCategoriesByFactoryId(2) }}
+  @include('ui.base.jumbotron',['title' => 'Category details.'])
 
   <!--Main layout-->
   <main class="m-5">
@@ -111,7 +109,7 @@
             <div class="col-lg-3 col-md-12 mb-4">
                 <div class="flex-column">
                         @foreach($factory->getCategoriesByFactoryId($factory->id) as $cate)
-                           <a href="{{ $cate->id  }}" class="btn btn-outline-dark">{{ $cate->name }}</a>
+                           <a href="{{ route('ui.category.show',$cate->id) }}" class="btn btn-outline-dark">{{ $cate->name }}</a>
                         @endforeach
                 </div>
             </div>
